@@ -78,7 +78,7 @@ Mappings:
 # ║ LaunchTemplate                      │ AWS::EC2::LaunchTemplate                    │ Launch Template.                                                                    ║
 # ║ Ec2Instance                         │ AWS::EC2::Instance                          │ EC2 Instance.                                                                       ║
 # ║ LogGroup                            │ AWS::Logs::LogGroup                         │ LogGroup for Lambda Function.                                                       ║
-# ║ LambdaFunction                      │ AWS::Lambda::Function                       │ Lambda Function for Update Launch Template.                                         ║
+# ║ LambdaFunction                      │ AWS::Serverless::Function                   │ Lambda Function for Update Launch Template.                                         ║
 # ║ Event                               │ AWS::Events::Rule                           │ Event Rule for Backup Job Complete.                                                 ║
 # ╚═════════════════════════════════════╧═════════════════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 Resources:
@@ -382,6 +382,18 @@ Resources:
         - Key: Name
           Value: lg-lambdafunction
 
-  # LambdaFunction:
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Description: Launch Template Update Function
+      CodeUri: src/handlers/ltupdate
+      FunctionName: ltupdate
+      Handler: lt-update.lambda_handler
+      Role: !Ref LambdaRole
+      Runtime: python3.12
+      LoggingConfig:
+        LogGroup: !Ref LogGroup
+      Tags:
+        Name: ltupdate
 
   # Event:
