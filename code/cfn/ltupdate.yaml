@@ -1,0 +1,387 @@
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.01 Launch Template Update Solution - CloudFormation Template                                                                                          ║
+# ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Launch Template Update Solution Stack."
+Transform:
+  - "AWS::Serverless-2016-10-31"
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: Launch Template Configuration.
+        Parameters:
+          - LatestAmiId
+          - InstanceType
+          - VolumeSize
+
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Parameters                                                                                                   ║
+# ╠═══════════════════════╤═══════════════════════════════════════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════╣
+# ║ LatestAmiId           │ AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>   │ Latest Amazon Linux 2023 AMI ID.                                                                 ║
+# ║ InstanceType          │ String                                            │ EC2 Instance Type.                                                                               ║
+# ║ VolumeSize            │ Number                                            │ EBS Volume Size.                                                                                 ║
+# ╚═══════════════════════╧═══════════════════════════════════════════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════╝
+Parameters:
+  LatestAmiId:
+    Description: Latest Amazon Linux 2023 AMI ID.
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-minimal-kernel-default-x86_64
+
+  InstanceType:
+    Description: EC2 Instance Type.
+    Type: String
+    Default: t2.micro
+
+  VolumeSize:
+    Description: EBS Volume Size.
+    Type: Number
+    Default: 30
+    MinValue: 30
+    MaxValue: 100
+
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Mappings                                                                         ║
+# ╠═════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+# ║ CMKParams           │ KMS CMK parameters.                                                                                                        ║
+# ║ IAMParams           │ IAM Role parameters.                                                                                                       ║
+# ╚═════════════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Mappings:
+  CMKParams:
+    AliasValue:
+      Backup: backup-cmk
+      Ebs: ebs-cmk
+  IAMParams:
+    RoleValue:
+      Backup: AWSBackupRole
+      Lambda: LambdaRole
+      Ec2: Ec2Role
+
+# ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Resources                                                                                               ║
+# ╠═════════════════════════════════════╤═════════════════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
+# ║ BackupCmk                           │ AWS::KMS::Key                               │ CMK for AWS Backup.                                                                 ║
+# ║ EbsCmk                              │ AWS::KMS::Key                               │ CMK for Amazon EBS.                                                                 ║
+# ║ BackupCmkAlias                      │ AWS::KMS::Alias                             │ AWS Backup CMK Alias.                                                               ║
+# ║ EbsCmkAlias                         │ AWS::KMS::Alias                             │ Amazon EBS CMK Alias.                                                               ║
+# ║ BackupRole                          │ AWS::IAM::Role                              │ IAM Role for AWS Backup Job.                                                        ║
+# ║ LambdaPolicy                        │ AWS::IAM::ManagedPolicy                     │ IAM Policy for AWS Lambda Update Launch Template.                                   ║
+# ║ LambdaRole                          │ AWS::IAM::Role                              │ IAM Role for AWS Lambda.                                                            ║
+# ║ Ec2Role                             │ AWS::IAM::Role                              │ IAM Role for EC2 Instance.                                                          ║
+# ║ BkVault                             │ AWS::Backup::BackupVault                    │ AWS Backup Vault.                                                                   ║
+# ║ Vpc                                 │ AWS::EC2::VPC                               │ VPC.                                                                                ║
+# ║ PrivateSubnet                       │ AWS::EC2::Subnet                            │ Private Subnet.                                                                     ║
+# ║ KeyPair                             │ AWS::EC2::KeyPair                           │ KeyPair.                                                                            ║
+# ║ Ec2Sg                               │ AWS::EC2::SecurityGroup                     │ EC2 SecurityGroup.                                                                  ║
+# ║ Ec2InstanceProfile                  │ AWS::IAM::InstanceProfile                   │ IAM Instance Profile.                                                               ║
+# ║ LaunchTemplate                      │ AWS::EC2::LaunchTemplate                    │ Launch Template.                                                                    ║
+# ║ Ec2Instance                         │ AWS::EC2::Instance                          │ EC2 Instance.                                                                       ║
+# ║ LogGroup                            │ AWS::Logs::LogGroup                         │ LogGroup for Lambda Function.                                                       ║
+# ║ LambdaFunction                      │ AWS::Lambda::Function                       │ Lambda Function for Update Launch Template.                                         ║
+# ║ Event                               │ AWS::Events::Rule                           │ Event Rule for Backup Job Complete.                                                 ║
+# ╚═════════════════════════════════════╧═════════════════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+Resources:
+  BackupCmk:
+    Type: AWS::KMS::Key
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      Description: AWS Backup CMK
+      EnableKeyRotation: true
+      PendingWindowInDays: 7
+      MultiRegion: false
+      Tags:
+        - Key: Name
+          Value: !FindInMap [CMKParams, AliasValue, Backup]
+      KeyPolicy:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Sid": "Enable IAM User Permissions",
+                "Effect": "Allow",
+                "Principal":
+                  {
+                    "AWS":
+                      {
+                        "Fn::Sub": "arn:${AWS::Partition}:iam::${AWS::AccountId}:root",
+                      },
+                  },
+                "Action": "kms:*",
+                "Resource": "*",
+              },
+            ],
+        }
+
+  EbsCmk:
+    Type: AWS::KMS::Key
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      Description: Amazon EBS CMK
+      EnableKeyRotation: true
+      PendingWindowInDays: 7
+      MultiRegion: false
+      Tags:
+        - Key: Name
+          Value: !FindInMap [CMKParams, AliasValue, Ebs]
+      KeyPolicy:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Sid": "Enable IAM User Permissions",
+                "Effect": "Allow",
+                "Principal":
+                  {
+                    "AWS":
+                      {
+                        "Fn::Sub": "arn:${AWS::Partition}:iam::${AWS::AccountId}:root",
+                      },
+                  },
+                "Action": "kms:*",
+                "Resource": "*",
+              },
+            ],
+        }
+
+  BackupCmkAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub
+        - alias/${alias_name}
+        - alias_name: !FindInMap [CMKParams, AliasValue, Backup]
+      TargetKeyId: !Ref BackupCmk
+
+  EbsCmkAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub
+        - alias/${alias_name}
+        - alias_name: !FindInMap [CMKParams, AliasValue, Ebs]
+      TargetKeyId: !Ref EbsCmk
+
+  BackupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: IAM Role for AWS Backup Job.
+      RoleName: !FindInMap [IAMParams, RoleValue, Backup]
+      AssumeRolePolicyDocument:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Effect": "Allow",
+                "Principal": { "Service": ["backup.amazonaws.com"] },
+                "Action": "sts:AssumeRole",
+              },
+            ],
+        }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup
+        - arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores
+      Tags:
+        - Key: Name
+          Value: !FindInMap [IAMParams, RoleValue, Backup]
+
+  LambdaPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: IAM Policy for AWS Lambda Update Launch Template.
+      ManagedPolicyName: LambdaUpdateLaunchTemplatePolicy
+      PolicyDocument:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Sid": "AllowCreateUpdateLaunchTemplate",
+                "Effect": "Allow",
+                "Action":
+                  [
+                    "ec2:DescribeImages",
+                    "ec2:DescribeLaunchTemplates",
+                    "ec2:DescribeLaunchTemplateVersions",
+                    "ec2:ModifyLaunchTemplate",
+                    "ec2:DeleteLaunchTemplateVersions",
+                    "ec2:CreateLaunchTemplateVersion",
+                  ],
+                "Resource": "*",
+              },
+            ],
+        }
+
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: IAM Role for AWS Lambda.
+      RoleName: !FindInMap [IAMParams, RoleValue, Lambda]
+      AssumeRolePolicyDocument:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Effect": "Allow",
+                "Principal": { "Service": ["lambda.amazonaws.com"] },
+                "Action": "sts:AssumeRole",
+              },
+            ],
+        }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - !Ref LambdaPolicy
+      Tags:
+        - Key: Name
+          Value: !FindInMap [IAMParams, RoleValue, Lambda]
+
+  Ec2Role:
+    Type: AWS::IAM::Role
+    Properties:
+      Description: IAM Role for EC2 Instance.
+      RoleName: !FindInMap [IAMParams, RoleValue, Ec2]
+      AssumeRolePolicyDocument:
+        {
+          "Version": "2012-10-17",
+          "Statement":
+            [
+              {
+                "Effect": "Allow",
+                "Principal": { "Service": ["ec2.amazonaws.com"] },
+                "Action": "sts:AssumeRole",
+              },
+            ],
+        }
+      Tags:
+        - Key: Name
+          Value: !FindInMap [IAMParams, RoleValue, Ec2]
+
+  BkVault:
+    Type: AWS::Backup::BackupVault
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      BackupVaultName: BackupVault
+      EncryptionKeyArn: !Ref BackupCmk
+      BackupVaultTags:
+        Name: BackupVault
+
+  Vpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: vpc
+
+  PrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: !Sub ${AWS::Region}a
+      VpcId: !Ref Vpc
+      Tags:
+        - Key: Name
+          Value: privatesubnet
+
+  KeyPair:
+    Type: AWS::EC2::KeyPair
+    Properties:
+      KeyName: keypair
+      KeyType: rsa
+      KeyFormat: pem
+      Tags:
+        - Key: Name
+          Value: keypair
+
+  Ec2Sg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: EC2 Security Group
+      VpcId: !Ref Vpc
+      Tags:
+        - Key: Name
+          Value: ec2sg
+
+  Ec2InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles:
+        - !FindInMap [IAMParams, RoleValue, Ec2]
+
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateName: launchtemplate
+      VersionDescription: LaunchTemplate
+      LaunchTemplateData:
+        DisableApiTermination: false
+        EbsOptimized: true
+        IamInstanceProfile: !Ref Ec2InstanceProfile
+        ImageId: !Ref LatestAmiId
+        InstanceType: !Ref InstanceType
+        KeyName: !Ref KeyPair
+        SecurityGroupIds:
+          - !Ref Ec2Sg
+        MetadataOptions:
+          HttpTokens: required
+        TagSpecifications:
+          - ResourceType: instance
+            Tags:
+              - Key: Name
+                Value: instance1
+              - Key: Backup
+                Value: lt1
+      TagSpecifications:
+        - ResourceType: launch-template
+          Tags:
+            - Key: Name
+              Value: launchtemplate
+            - Key: Backup
+              Value: lt1
+
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      BlockDeviceMappings:
+        - DeviceName: /dev/sda1
+          Ebs:
+            DeleteOnTermination: true
+            Encrypted: true
+            Iops: 3000
+            KmsKeyId: !Ref EbsCmk
+            VolumeSize: !Ref VolumeSize
+            VolumeType: gp3
+      DisableApiTermination: false
+      EbsOptimized: true
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: false
+          DeviceIndex: "0"
+          DeleteOnTermination: true
+          SubnetId: !Ref PrivateSubnet
+          Description: Primary ENI
+      PropagateTagsToVolumeOnCreation: false
+
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+    Properties:
+      LogGroupName: lg-lambdafunction
+      RetentionInDays: 7
+      Tags:
+        - Key: Name
+          Value: lg-lambdafunction
+
+  # LambdaFunction:
+
+  # Event:
