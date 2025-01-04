@@ -310,6 +310,8 @@ Resources:
           Value: ec2sg
 
   Ec2InstanceProfile:
+    DependsOn:
+      - Ec2Role
     Type: AWS::IAM::InstanceProfile
     Properties:
       Roles:
