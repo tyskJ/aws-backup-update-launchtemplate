@@ -22,7 +22,6 @@
 ===============
 1. CFnテンプレート&Lambdaコード用S3バケット作成
 ---------------
-
 .. code-block:: bash
 
   AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
