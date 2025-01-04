@@ -77,3 +77,8 @@
 
   aws s3 rm s3://ep01-$DATE/ --recursive --profile admin
   aws s3 rb s3://ep01-$DATE --profile admin
+
+参考資料
+===============================
+https://www.python.digibeatrix.com/archives/990
+https://www.python.digibeatrix.com/archives/990
