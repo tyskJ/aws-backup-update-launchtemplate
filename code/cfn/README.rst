@@ -21,14 +21,14 @@
 実作業 - ローカル -
 ==============================
 1. CFnテンプレート&Lambdaコード用S3バケット作成
-------------------------------
+----------------------------------------------
 .. code-block:: bash
 
   DATE=$(date '+%Y%m%d')
   aws s3 mb s3://ep01-$DATE --profile admin
 
 2. Python3の文字エンコーディング設定を *UTF-8* に変更
-------------------------------
+----------------------------------------------------
 .. code-block:: bash
 
   PYTHONUTF8=1
@@ -42,7 +42,7 @@
   * *Python3* がファイルを出力する際の文字コードを環境変数にて *UTF-8* に指定
 
 3. アーティファクト(Lambda関数コード)をS3にアップロード
-------------------------------
+----------------------------------------------------
 .. code-block:: bash
 
   aws cloudformation package \
@@ -51,7 +51,7 @@
   --output-template-file ltupdate-out.yaml --profile admin
 
 4. CloudFormation Stackデプロイ
-------------------------------
+-------------------------------
 .. code-block:: bash
 
   aws cloudformation deploy \
@@ -72,7 +72,7 @@
   --stack-name EP01 --profile admin
 
 2. CFnテンプレート&Lambdaコード用S3バケット削除
-------------------------------
+----------------------------------------------
 .. code-block:: bash
 
   aws s3 rm s3://ep01-$DATE/ --recursive --profile admin
