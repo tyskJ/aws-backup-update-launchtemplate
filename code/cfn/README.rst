@@ -40,6 +40,7 @@
   * Windowsの文字コードは *cp932(Shift_JIS)* を使っている
   * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生する
 
+
 3. アーティファクト(Lambda関数コード)をS3にアップロード
 ------------------------------
 .. code-block:: bash
