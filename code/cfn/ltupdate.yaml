@@ -324,13 +324,14 @@ Resources:
       VersionDescription: LaunchTemplate
       LaunchTemplateData:
         DisableApiTermination: false
-        EbsOptimized: true
-        IamInstanceProfile: !Ref Ec2InstanceProfile
+        EbsOptimized: false
+        IamInstanceProfile:
+          Name: !Ref Ec2InstanceProfile
         ImageId: !Ref LatestAmiId
-        InstanceType: !Ref InstanceType
-        KeyName: !Ref KeyPair
         SecurityGroupIds:
           - !Ref Ec2Sg
+        InstanceType: !Ref InstanceType
+        KeyName: !Ref KeyPair
         MetadataOptions:
           HttpTokens: required
         TagSpecifications:
@@ -351,11 +352,8 @@ Resources:
   Ec2Instance:
     Type: AWS::EC2::Instance
     Properties:
-      LaunchTemplate:
-        LaunchTemplateId: !Ref LaunchTemplate
-        Version: !GetAtt LaunchTemplate.LatestVersionNumber
       BlockDeviceMappings:
-        - DeviceName: /dev/sda1
+        - DeviceName: /dev/xvda
           Ebs:
             DeleteOnTermination: true
             Encrypted: true
@@ -364,14 +362,25 @@ Resources:
             VolumeSize: !Ref VolumeSize
             VolumeType: gp3
       DisableApiTermination: false
-      EbsOptimized: true
+      EbsOptimized: false
+      ImageId: !Ref LatestAmiId
+      InstanceType: !Ref InstanceType
+      IamInstanceProfile: !Ref Ec2InstanceProfile
+      KeyName: !Ref KeyPair
       NetworkInterfaces:
         - AssociatePublicIpAddress: false
           DeviceIndex: "0"
           DeleteOnTermination: true
           SubnetId: !Ref PrivateSubnet
+          GroupSet:
+            - !Ref Ec2Sg
           Description: Primary ENI
       PropagateTagsToVolumeOnCreation: false
+      Tags:
+        - Key: Name
+          Value: instance1
+        - Key: Backup
+          Value: lt1
 
   LogGroup:
     Type: AWS::Logs::LogGroup
@@ -391,7 +400,7 @@ Resources:
       CodeUri: src/handlers/ltupdate
       FunctionName: ltupdate
       Handler: lt-update.lambda_handler
-      Role: !Ref LambdaRole
+      Role: !GetAtt LambdaRole.Arn
       Runtime: python3.12
       LoggingConfig:
         LogGroup: !Ref LogGroup
