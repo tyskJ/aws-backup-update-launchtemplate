@@ -36,9 +36,10 @@
 
 .. note::
 
-  * AWS CLIは *Python3* を内部的に使用している
-  * Windowsの文字コードは *cp932(Shift_JIS)* を使っている
-  * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生する
+  * AWS CLIは *Python3* を内部的に使用
+  * Windowsの文字コードは *cp932(Shift_JIS)* を使用
+  * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生
+  * *Python3* がファイルを出力する際の文字コードを環境変数にて *UTF-8* に指定
 
 3. アーティファクト(Lambda関数コード)をS3にアップロード
 ------------------------------
