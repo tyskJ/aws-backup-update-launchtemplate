@@ -24,10 +24,10 @@
 ------------------------------
 .. code-block:: bash
 
-  AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
-  aws s3 mb s3://ep01-$AWS_ACCOUNT_ID --profile admin
+  DATE=$(date '+%Y%m%d')
+  aws s3 mb s3://ep01-$DATE --profile admin
 
-2. Python3の文字エンコーディング設定を *UTF-8* に変更
+1. Python3の文字エンコーディング設定を *UTF-8* に変更
 ------------------------------
 .. code-block:: bash
 
@@ -46,10 +46,15 @@
 
   aws cloudformation package \
   --template-file ltupdate.yaml \
-  --s3-bucket ep01-$AWS_ACCOUNT_ID \
+  --s3-bucket ep01-$DATE \
   --output-template-file ltupdate-out.yaml --profile admin
 
 
 後片付け - ローカル -
 ==============================
+1. CFnテンプレート&Lambdaコード用S3バケット削除
+------------------------------
+.. code-block:: bash
 
+  aws s3 rm s3://ep01-$DATE/ --recursive --profile admin
+  aws s3 rb s3://ep01-$DATE --profile admin
