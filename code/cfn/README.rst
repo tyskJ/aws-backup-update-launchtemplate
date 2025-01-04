@@ -27,7 +27,7 @@
   DATE=$(date '+%Y%m%d')
   aws s3 mb s3://ep01-$DATE --profile admin
 
-1. Python3の文字エンコーディング設定を *UTF-8* に変更
+2. Python3の文字エンコーディング設定を *UTF-8* に変更
 ------------------------------
 .. code-block:: bash
 
@@ -50,10 +50,28 @@
   --s3-bucket ep01-$DATE \
   --output-template-file ltupdate-out.yaml --profile admin
 
+4. CloudFormation Stackデプロイ
+------------------------------
+.. code-block:: bash
+
+  aws cloudformation deploy \
+  --template-file ltupdate-out.yaml \
+  --stack-name EP01 \
+  --s3-bucket ep01-$DATE \
+  --s3-prefix cfn \
+  --capabilities CAPABILITY_NAMED_IAM --profile admin
+
 
 後片付け - ローカル -
 ==============================
-1. CFnテンプレート&Lambdaコード用S3バケット削除
+1. CloudFormation Stack削除
+------------------------------
+.. code-block:: bash
+
+  aws cloudformation delete-stack \
+  --stack-name EP01 --profile admin
+
+2. CFnテンプレート&Lambdaコード用S3バケット削除
 ------------------------------
 .. code-block:: bash
 
