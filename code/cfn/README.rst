@@ -1,9 +1,13 @@
 ===============
-RSTのサンプル
+デプロイ - CloudFormation -
 ===============
 
-起動
+作業環境
 ===============
+* Windows 11 Pro
+* Visual Studio Code 1.96.2 (Git Bash)
+* Git 2.45.0.windows.1
+* AWS CLI 2.22.19.0
 
 .. code-block:: bash
 
