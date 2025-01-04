@@ -23,9 +23,7 @@
 1. CFnテンプレート&Lambdaコード用S3バケット作成
 
 .. code-block:: bash
-
-  docker compose exec mypython pandoc -f markdown -t html -o md_to_html.html markdown.md
-  docker compose exec mypython pandoc -f markdown -t docx -o md_to_docx.docx markdown.md
+  AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
 
 後片付け - ローカル -
 ===============
