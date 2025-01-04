@@ -15,6 +15,10 @@
 * *AdministratorAccess* がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
 * 以下コマンドを実行し、*admin* プロファイルを作成していること (デフォルトリージョンは *ap-northeast-1* )
 
+.. code-block:: bash
+
+  aws configure --profile admin
+
 事前作業
 ==============================
 1. *tenv* (Terraformバージョンマネージャー)リリースバイナリダウンロード
@@ -63,6 +67,7 @@
 リファレンス
 -------------------------------
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+* https://www.toptal.com/developers/gitignore
 
 ブログ
 -------------------------------
