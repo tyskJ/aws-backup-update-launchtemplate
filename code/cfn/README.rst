@@ -27,6 +27,16 @@
   AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
   aws s3 mb s3://ep01-$AWS_ACCOUNT_ID --profile admin
 
+2. アーティファクト(Lambda関数コード)をS3にアップロード
+
+.. code-block:: bash
+
+  aws cloudformation package \
+  --template-file ltupdate.yaml \
+  --s3-bucket ep01-$AWS_ACCOUNT_ID \
+  --output-template-file ltupdate-out.yaml --profile admin
+
+
 後片付け - ローカル -
 ===============
 
