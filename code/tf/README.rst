@@ -8,6 +8,7 @@
 * Visual Studio Code 1.96.2 (Default Terminal: Git Bash)
 * Git 2.45.0.windows.1
 * tenv v4.1.0
+* Terraform v1.10.3
 
 前提条件
 ==============================
