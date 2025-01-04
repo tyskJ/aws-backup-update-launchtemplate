@@ -27,7 +27,7 @@
   DATE=$(date '+%Y%m%d')
   aws s3 mb s3://ep01-$DATE --profile admin
 
-#. Python3の文字エンコーディング設定を *UTF-8* に変更
+2. Python3の文字エンコーディング設定を *UTF-8* に変更
 ----------------------------------------------------
 .. code-block:: bash
 
