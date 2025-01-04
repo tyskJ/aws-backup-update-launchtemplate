@@ -41,7 +41,7 @@
   * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生
   * *Python3* がファイルを出力する際の文字コードを環境変数にて *UTF-8* に指定
 
-#. アーティファクト(Lambda関数コード)をS3にアップロード
+3. アーティファクト(Lambda関数コード)をS3にアップロード
 ----------------------------------------------------
 .. code-block:: bash
 
@@ -50,7 +50,7 @@
   --s3-bucket ep01-$DATE \
   --output-template-file ltupdate-out.yaml --profile admin
 
-#. CloudFormation Stackデプロイ
+4. CloudFormation Stackデプロイ
 -------------------------------
 .. code-block:: bash
 
