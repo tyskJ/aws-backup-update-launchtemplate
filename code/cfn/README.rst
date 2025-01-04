@@ -25,7 +25,7 @@
 .. code-block:: bash
 
   DATE=$(date '+%Y%m%d')
-  aws s3 mb s3://ep01-$DATE --profile admin
+  aws s3 mb s3://ep01-cfn-$DATE --profile admin
 
 2. Python3の文字エンコーディング設定を *UTF-8* に変更
 ----------------------------------------------------
@@ -47,7 +47,7 @@
 
   aws cloudformation package \
   --template-file ltupdate.yaml \
-  --s3-bucket ep01-$DATE \
+  --s3-bucket ep01-cfn-$DATE \
   --output-template-file ltupdate-out.yaml --profile admin
 
 4. CloudFormation Stackデプロイ
@@ -57,7 +57,7 @@
   aws cloudformation deploy \
   --template-file ltupdate-out.yaml \
   --stack-name EP01 \
-  --s3-bucket ep01-$DATE \
+  --s3-bucket ep01-cfn-$DATE \
   --s3-prefix cfn \
   --capabilities CAPABILITY_NAMED_IAM --profile admin
 
@@ -75,8 +75,8 @@
 ----------------------------------------------
 .. code-block:: bash
 
-  aws s3 rm s3://ep01-$DATE/ --recursive --profile admin
-  aws s3 rb s3://ep01-$DATE --profile admin
+  aws s3 rm s3://ep01-cfn-$DATE/ --recursive --profile admin
+  aws s3 rb s3://ep01-cfn-$DATE --profile admin
 
 参考資料
 ===============================
