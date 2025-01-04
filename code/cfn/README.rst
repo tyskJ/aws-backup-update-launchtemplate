@@ -12,6 +12,11 @@
 前提条件
 ===============
 * *AdministratorAccess*がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
+* 以下コマンドを実行し、 *admin* プロファイルを作成していること
+
+.. code-block:: bash
+
+  aws configure --profile admin
 
 実作業 - ローカル -
 ===============
