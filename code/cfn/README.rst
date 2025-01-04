@@ -29,7 +29,7 @@
   aws s3 mb s3://ep01-$AWS_ACCOUNT_ID --profile admin
 
 2. Python3の文字エンコーディング設定を *UTF-8* に変更
-
+---------------
 .. code-block:: bash
 
   PYTHONUTF8=1
