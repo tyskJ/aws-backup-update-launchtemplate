@@ -80,5 +80,12 @@
 
 参考資料
 ===============================
-https://www.python.digibeatrix.com/archives/990
-https://www.python.digibeatrix.com/archives/990
+リファレンス
+-------------------------------
+* https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html
+* https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+
+ブログ
+-------------------------------
+* https://www.python.digibeatrix.com/archives/990
+* https://dev.classmethod.jp/articles/understanding-codeuri-property-and-deployment-package-in-serverless-application-model/#toc-
