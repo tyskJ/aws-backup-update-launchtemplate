@@ -4,7 +4,7 @@
 
 作業環境 - ローカル -
 ==============================
-* Windows 11 Pro
+* 64bit版 Windows 11 Pro
 * Visual Studio Code 1.96.2 (Default Terminal: Git Bash)
 * Git 2.45.0.windows.1
 * AWS CLI 2.22.19.0
