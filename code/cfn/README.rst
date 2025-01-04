@@ -89,3 +89,4 @@
 -------------------------------
 * https://www.python.digibeatrix.com/archives/990
 * https://dev.classmethod.jp/articles/understanding-codeuri-property-and-deployment-package-in-serverless-application-model/#toc-
+* https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/
