@@ -12,7 +12,7 @@
 前提条件
 ===============
 * *AdministratorAccess* がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
-* 以下コマンドを実行し、*admin* プロファイルを作成していること
+* 以下コマンドを実行し、*admin* プロファイルを作成していること (デフォルトリージョンは*ap-northeast-1*)
 
 .. code-block:: bash
 
@@ -25,6 +25,7 @@
 .. code-block:: bash
 
   AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
+  aws s3 mb s3://ep01-$AWS_ACCOUNT_ID --profile admin
 
 後片付け - ローカル -
 ===============
