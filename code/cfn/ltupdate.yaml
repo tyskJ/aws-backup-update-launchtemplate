@@ -79,7 +79,7 @@ Mappings:
 # ║ Ec2Instance                         │ AWS::EC2::Instance                          │ EC2 Instance.                                                                       ║
 # ║ LogGroup                            │ AWS::Logs::LogGroup                         │ LogGroup for Lambda Function.                                                       ║
 # ║ LambdaFunction                      │ AWS::Serverless::Function                   │ Lambda Function for Update Launch Template.                                         ║
-# ║ Event                               │ AWS::Events::Rule                           │ Event Rule for Backup Job Complete.                                                 ║
+# ║ LambdaFunctionEventRule             │ AWS::Events::Rule                           │ Event Rule for Backup Job Complete. (Created By SAM Properties.)                    ║
 # ╚═════════════════════════════════════╧═════════════════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 Resources:
   BackupCmk:
@@ -404,7 +404,22 @@ Resources:
       Runtime: python3.12
       LoggingConfig:
         LogGroup: !Ref LogGroup
+      Events:
+        EventRule:
+          Type: EventBridgeRule
+          Properties:
+            RuleName: rule-backupjob-complete
+            State: ENABLED
+            EventBusName: default
+            Pattern:
+              source:
+                - "aws.backup"
+              detail-type:
+                - "Backup Job State Change"
+              detail:
+                state:
+                  - "COMPLETED"
+            Target:
+              Id: invokeLambda
       Tags:
         Name: ltupdate
-
-  # Event:
