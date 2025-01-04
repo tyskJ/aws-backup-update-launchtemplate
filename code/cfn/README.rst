@@ -27,7 +27,19 @@
   AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text --profile admin)
   aws s3 mb s3://ep01-$AWS_ACCOUNT_ID --profile admin
 
-2. アーティファクト(Lambda関数コード)をS3にアップロード
+2. Python3の文字エンコーディング設定を *UTF-8* に変更
+.. note::
+  * AWS CLIは *Python3* を内部的に使用している
+  * Windowsの文字コードは *cp932(Shift_JIS)* を使っている
+  * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生する
+
+.. code-block:: bash
+
+  PYTHONUTF8=1
+  export PYTHONUTF8
+
+
+3. アーティファクト(Lambda関数コード)をS3にアップロード
 
 .. code-block:: bash
 
