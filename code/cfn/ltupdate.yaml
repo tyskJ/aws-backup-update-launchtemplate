@@ -266,7 +266,7 @@ Resources:
     UpdateReplacePolicy: Delete
     Properties:
       BackupVaultName: BackupVault
-      EncryptionKeyArn: !Ref BackupCmk
+      EncryptionKeyArn: !GetAtt BackupCmk.Arn
       BackupVaultTags:
         Name: BackupVault
 
