@@ -9,10 +9,6 @@
 * Git 2.45.0.windows.1
 * AWS CLI 2.22.19.0
 
-フォルダ構成
-==============================
-* フォルダ構成は `こちら <./index.rst>`_ を参照
-
 前提条件
 ==============================
 * *AdministratorAccess* がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
@@ -31,7 +27,7 @@
   DATE=$(date '+%Y%m%d')
   aws s3 mb s3://ep01-$DATE --profile admin
 
-2. Python3の文字エンコーディング設定を *UTF-8* に変更
+#. Python3の文字エンコーディング設定を *UTF-8* に変更
 ----------------------------------------------------
 .. code-block:: bash
 
@@ -45,7 +41,7 @@
   * `aws cloudformation package` 実行時のyamlファイル出力時に、 *cp932* に伴うエラーが発生
   * *Python3* がファイルを出力する際の文字コードを環境変数にて *UTF-8* に指定
 
-3. アーティファクト(Lambda関数コード)をS3にアップロード
+#. アーティファクト(Lambda関数コード)をS3にアップロード
 ----------------------------------------------------
 .. code-block:: bash
 
@@ -54,7 +50,7 @@
   --s3-bucket ep01-$DATE \
   --output-template-file ltupdate-out.yaml --profile admin
 
-4. CloudFormation Stackデプロイ
+#. CloudFormation Stackデプロイ
 -------------------------------
 .. code-block:: bash
 
