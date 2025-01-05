@@ -6,11 +6,11 @@
 # ╚═════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
 output "backup_kms_key_arn" {
-  value = aws_kms_key.backup_cmk.arn
+  value       = aws_kms_key.backup_cmk.arn
   description = "KMS Key Arn for backup kms key."
 }
 
 output "ec2_kms_key_id" {
-  value = aws_kms_key.ec2_cmk.key_id
+  value       = aws_kms_key.ec2_cmk.key_id
   description = "KMS Key Id for EC2 kms key."
 }
