@@ -3,6 +3,7 @@
 # ╠═════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ nw              │ ./modules/vpc_subnet              │ invoke network module.                                                              ║
 # ║ iam             │ ./modules/iam                     │ invoke iam module.                                                                  ║
+# ║ kms             │ ./modules/kms                     │ invoke kms module.                                                                  ║
 # ╚═════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
 module "nw" {
@@ -19,4 +20,11 @@ module "iam" {
   lambda_role_name = "${local.env}-lambda-role"
   backup_role_name = "${local.env}-backup-role"
   ltupdate_policy_name = "${local.env}-ltupdate-policy"
+}
+
+module "kms" {
+  source = "../modules/kms"
+
+  ec2_cmk_name = "${local.env}-ec2-cmk"
+  backup_cmk_name = "${local.env}-backup-cmk"
 }
