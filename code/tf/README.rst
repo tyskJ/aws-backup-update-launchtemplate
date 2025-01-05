@@ -19,7 +19,7 @@
 
   aws configure --profile admin
 
-事前作業
+事前作業(1)
 ==============================
 1. *tenv* (Terraformバージョンマネージャー)リリースバイナリダウンロード
 --------------------------------------------------------------------
@@ -54,12 +54,33 @@
   tenv tf list # インストールしたバージョンを確認
   tenv tf use v1.10.3
 
+事前作業(2)
+==============================
+1. *tfstate* 用S3バケット作成
+-------------------------------
+.. code-block:: bash
+
+  aws s3 mb s3://ep01-tf-2025 --profile admin
+
 実作業 - ローカル -
 ==============================
 
 
 後片付け - ローカル -
 ==============================
+1. 環境削除
+--------------
+.. code-block:: bash
+
+  terraform destroy
+
+2. *tfstate* 用S3バケット削除
+------------------------------
+.. code-block:: bash
+
+  aws s3 rm s3://ep01-tf-2025 --recursive --profile admin
+  aws s3 rb s3://ep01-tf-2025 --profile admin
+
 
 
 参考資料
@@ -68,8 +89,10 @@
 -------------------------------
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 * https://www.toptal.com/developers/gitignore
+* https://spacelift.io/blog/terraform-best-practices
 
 ブログ
 -------------------------------
 * https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/
 * https://dev.classmethod.jp/articles/try-tenv-terraform-version-manager/
+* https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16
