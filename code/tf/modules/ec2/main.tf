@@ -62,7 +62,7 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.securitygroup.id]
   tags = {
     Name = var.ec2_map.name
-    Backup = lt1
+    Backup = "lt1"
   }
 }
 
@@ -84,11 +84,11 @@ resource "aws_launch_template" "launch_template" {
     resource_type = "instance"
     tags = {
       Name = var.ec2_map.name
-      Backup = lt1
+      Backup = "lt1"
     }
   }
   tags = {
     Name = var.lt_name
-    Backup = lt1
+    Backup = "lt1"
   }
 }
