@@ -13,7 +13,7 @@
 前提条件
 ==============================
 * *AdministratorAccess* がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
-* 実作業は *environments* フォルダ配下で実施すること
+* 実作業は *envs* フォルダ配下で実施すること
 * 以下コマンドを実行し、*admin* プロファイルを作成していること (デフォルトリージョンは *ap-northeast-1* )
 
 .. code-block:: bash
@@ -71,6 +71,17 @@
 
   terraform init
 
+2. 事前確認
+----------------------
+.. code-block:: bash
+
+  terraform plan
+
+3. デプロイ
+----------------------
+.. code-block:: bash
+
+  terraform apply -auto-approve
 
 後片付け - ローカル -
 ==============================
@@ -84,7 +95,7 @@
 ------------------------------
 .. code-block:: bash
 
-  aws s3 rm s3://ep01-tf-2025 --recursive --profile admin
+  aws s3 rm s3://ep01-tf-2025/ --recursive --profile admin
   aws s3 rb s3://ep01-tf-2025 --profile admin
 
 
@@ -101,4 +112,6 @@
 -------------------------------
 * https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/
 * https://dev.classmethod.jp/articles/try-tenv-terraform-version-manager/
+* https://dev.classmethod.jp/articles/terraform-bset-practice-jp/
 * https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16
+* https://www.ntt-tx.co.jp/column/iac/231204/
