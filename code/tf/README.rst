@@ -115,3 +115,5 @@
 * https://dev.classmethod.jp/articles/terraform-bset-practice-jp/
 * https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16
 * https://www.ntt-tx.co.jp/column/iac/231204/
+* https://tech.nri-net.com/entry/how_to_operate_local_files_with_terraform
+* https://dev.classmethod.jp/articles/retrieve-latest-ami-id-of-amazonlinux-2023/
