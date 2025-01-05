@@ -6,6 +6,7 @@
 # ║ kms             │ ./modules/kms                     │ invoke kms module.                                                                  ║
 # ║ backup          │ ./modules/awsbackup               │ invoke awsbackup module.                                                            ║
 # ║ ec2             │ ./modules/ec2                     │ invoke ec2 module.                                                                  ║
+# ║ observe         │ ./modules/lambda_eventbridge      │ invoke observe module.                                                              ║
 # ╚═════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
 module "nw" {
@@ -49,4 +50,11 @@ module "ec2" {
   kms_key_id                = module.kms.ec2_kms_key_id
   ec2_instance_profile_name = module.iam.ec2_instance_profile_name
   ec2_map                   = { "name" = "${local.env}-ec2", "instancetype" = "t2.micro", "volname" = "${local.env}-ebs-root", "volumesize" = "30" }
+  lt_name                   = "${local.env}-lt"
+}
+
+module "observe" {
+  source = "../modules/lambda_eventbridge"
+
+  lambda_role_arn = module.iam.lambda_role_arn
 }
