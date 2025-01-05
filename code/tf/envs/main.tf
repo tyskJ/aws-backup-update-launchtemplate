@@ -4,6 +4,7 @@
 # ║ nw              │ ./modules/vpc_subnet              │ invoke network module.                                                              ║
 # ║ iam             │ ./modules/iam                     │ invoke iam module.                                                                  ║
 # ║ kms             │ ./modules/kms                     │ invoke kms module.                                                                  ║
+# ║ backup          │ ./modules/awsbackup               │ invoke awsbackup module.                                                            ║
 # ╚═════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
 module "nw" {
@@ -27,4 +28,11 @@ module "kms" {
 
   ec2_cmk_name = "${local.env}-ec2-cmk"
   backup_cmk_name = "${local.env}-backup-cmk"
+}
+
+module "backup" {
+  source = "../modules/awsbackup"
+
+  bkvault_name = "${local.env}-bkvault"
+  kms_key_arn = module.kms.backup_kms_key_arn
 }
