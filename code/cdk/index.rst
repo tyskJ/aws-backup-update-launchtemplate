@@ -28,7 +28,7 @@
 ==============================
 1. *nvm-windows* ( Windows版 *Node.js* バージョンマネージャー)インストール
 ---------------------------------------------------------------------------------------
-* `GitHub <https://github.com/coreybutler/nvm-windows>`_ から *nvm-setup.exe* をダウンロード。
+* `GitHub <https://github.com/coreybutler/nvm-windows>`_ から *nvm-setup.exe* をダウンロード
 * デフォルト設定でインストール
 
 2. *node.js* (LTS版) インストール
