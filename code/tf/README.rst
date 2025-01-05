@@ -24,7 +24,7 @@
 ==============================
 1. *tenv* (Terraformバージョンマネージャー)リリースバイナリダウンロード
 --------------------------------------------------------------------
-* `GitHub <https://github.com/tofuutils/tenv/releases>` から64bit版バイナリ( *tenv_v4.1.0_Windows_x86_64.zip* )をダウンロード
+* `GitHub <https://github.com/tofuutils/tenv/releases>`_ から64bit版バイナリ( *tenv_v4.1.0_Windows_x86_64.zip* )をダウンロード
 
 2. バイナリデータを任意のフォルダに解凍
 -------------------------------------
