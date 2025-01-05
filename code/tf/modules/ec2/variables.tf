@@ -9,6 +9,7 @@
 # ║ kms_key_id             │ string                            │ KMS key ID.                                                                         ║
 # ║ instanceprofile_name   │ string                            │ EC2 instance profile name.                                                          ║
 # ║ ec2_map                │ map(string)                       │ ec2 instance settings.                                                              ║
+# ║ lt_name                │ string                            │ launch template name.                                                               ║
 # ╚════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
 variable "private_key_file_name" {
@@ -49,4 +50,9 @@ variable "ec2_instance_profile_name" {
 variable "ec2_map" {
   type        = map(string)
   description = "ec2 instance settings."
+}
+
+variable "lt_name" {
+  type        = string
+  description = "Launch Template name."
 }

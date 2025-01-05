@@ -6,6 +6,7 @@
 # ║ keypair                 │ aws_key_pair                      │ Key Pair.                                                                           ║
 # ║ securitygroup           │ aws_key_pair                      │ Key Pair.                                                                           ║
 # ║ ec2_instance            │ aws_instance                      │ EC2 Instance.                                                                       ║
+# ║ launch_template         │ aws_launch_template               │ Launch Template.                                                                    ║
 # ╚═════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
 resource "tls_private_key" "ssh_keygen" {
@@ -61,5 +62,33 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.securitygroup.id]
   tags = {
     Name = var.ec2_map.name
+    Backup = lt1
+  }
+}
+
+resource "aws_launch_template" "launch_template" {
+  name = var.lt_name
+  disable_api_termination = false
+  ebs_optimized = false
+  iam_instance_profile {
+    name = var.ec2_instance_profile_name
+  }
+  image_id = data.aws_ssm_parameter.amazonlinux_2023.value
+  instance_type = var.ec2_map.instancetype
+  metadata_options {
+    http_tokens = "required"
+  }
+  vpc_security_group_ids = [aws_security_group.securitygroup.id]
+  key_name = aws_key_pair.keypair.id
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = var.ec2_map.name
+      Backup = lt1
+    }
+  }
+  tags = {
+    Name = var.lt_name
+    Backup = lt1
   }
 }
