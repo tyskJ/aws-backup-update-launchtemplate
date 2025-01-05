@@ -61,34 +61,34 @@ resource "aws_instance" "ec2_instance" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.securitygroup.id]
   tags = {
-    Name = var.ec2_map.name
+    Name   = var.ec2_map.name
     Backup = "lt1"
   }
 }
 
 resource "aws_launch_template" "launch_template" {
-  name = var.lt_name
+  name                    = var.lt_name
   disable_api_termination = false
-  ebs_optimized = false
+  ebs_optimized           = false
   iam_instance_profile {
     name = var.ec2_instance_profile_name
   }
-  image_id = data.aws_ssm_parameter.amazonlinux_2023.value
+  image_id      = data.aws_ssm_parameter.amazonlinux_2023.value
   instance_type = var.ec2_map.instancetype
   metadata_options {
     http_tokens = "required"
   }
   vpc_security_group_ids = [aws_security_group.securitygroup.id]
-  key_name = aws_key_pair.keypair.id
+  key_name               = aws_key_pair.keypair.id
   tag_specifications {
     resource_type = "instance"
     tags = {
-      Name = var.ec2_map.name
+      Name   = var.ec2_map.name
       Backup = "lt1"
     }
   }
   tags = {
-    Name = var.lt_name
+    Name   = var.lt_name
     Backup = "lt1"
   }
 }
