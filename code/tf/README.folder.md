@@ -7,42 +7,41 @@
     |-- README.folder.md
     |-- README.rst
     |-- envs
-    |   |-- backend.tf
-    |   |-- locals.tf
-    |   |-- main.tf
-    |   |-- provider.tf
+    |   |-- backend.tf                   tfstateファイル管理設定ファイル
+    |   |-- locals.tf                    ローカル変数定義ファイル
+    |   |-- main.tf                      リソース定義ファイル
+    |   |-- provider.tf                  プロバイダー設定ファイル
     |   |-- src
     |   |   `-- handlers
     |   |       `-- ltupdate
-    |   |           |-- lt-update.py
-    |   |           `-- lt-update.zip
-    |   `-- version.tf
+    |   |           `-- lt-update.py     Lamda関数
+    |   `-- version.tf                   プロバイダー&Terraformバージョン管理ファイル
     `-- modules
-        |-- awsbackup
-        |   |-- main.tf
-        |   |-- outputs.tf
-        |   `-- variables.tf
-        |-- ec2
-        |   |-- data.tf
-        |   |-- main.tf
-        |   |-- outputs.tf
-        |   `-- variables.tf
-        |-- iam
-        |   |-- data.tf
-        |   |-- main.tf
-        |   |-- outputs.tf
-        |   `-- variables.tf
-        |-- kms
-        |   |-- main.tf
-        |   |-- outputs.tf
-        |   `-- variables.tf
-        |-- lambda_eventbridge
-        |   |-- data.tf
-        |   |-- main.tf
-        |   |-- outputs.tf
-        |   `-- variables.tf
-        `-- vpc_subnet
-            |-- main.tf
-            |-- outputs.tf
-            `-- variables.tf
+        |-- awsbackup                    AWS Backupモジュール
+        |   |-- main.tf                   リソース定義ファイル
+        |   |-- outputs.tf                リソース戻り値定義ファイル
+        |   `-- variables.tf              変数定義ファイル
+        |-- ec2                          EC2モジュール
+        |   |-- data.tf                   外部データソース定義ファイル
+        |   |-- main.tf                   リソース定義ファイル
+        |   |-- outputs.tf                リソース戻り値定義ファイル
+        |   `-- variables.tf              変数定義ファイル
+        |-- iam                          IAMモジュール
+        |   |-- data.tf                   外部データソース定義ファイル
+        |   |-- main.tf                   リソース定義ファイル
+        |   |-- outputs.tf                リソース戻り値定義ファイル
+        |   `-- variables.tf              変数定義ファイル
+        |-- kms                          KMSモジュール
+        |   |-- main.tf                   リソース定義ファイル
+        |   |-- outputs.tf                リソース戻り値定義ファイル
+        |   `-- variables.tf              変数定義ファイル
+        |-- lambda_eventbridge           Lambda＆EventBridgeモジュール
+        |   |-- data.tf                   外部データソース定義ファイル
+        |   |-- main.tf                   リソース定義ファイル
+        |   |-- outputs.tf                リソース戻り値定義ファイル
+        |   `-- variables.tf              変数定義ファイル
+        `-- vpc_subnet                   VPC＆Subnetモジュール
+            |-- main.tf                   リソース定義ファイル
+            |-- outputs.tf                リソース戻り値定義ファイル
+            `-- variables.tf              変数定義ファイル
 ```
