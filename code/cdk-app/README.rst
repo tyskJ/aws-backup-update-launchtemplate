@@ -14,6 +14,10 @@
 * typescript Version 5.7.2
 * aws-cdk v2.174.0
 
+フォルダ構成
+==============================
+* `こちら <./folder.md>`_ を参照
+
 前提条件
 ==============================
 * *AdministratorAccess* がアタッチされているIAMユーザーのアクセスキーID/シークレットアクセスキーを作成していること
@@ -31,7 +35,7 @@
 * `GitHub <https://github.com/coreybutler/nvm-windows>`_ から *nvm-setup.exe* をダウンロード
 * デフォルト設定でインストール
 
-2. *node.js* (LTS版) インストール
+1. *node.js* (LTS版) インストール
 ---------------------------------
 .. code-block:: bash
 
