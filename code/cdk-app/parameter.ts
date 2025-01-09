@@ -8,7 +8,6 @@
 */
 export type vpcInfo = {
   id: string;
-  name: string;
   cidrBlock: string;
   dnsHost: boolean;
   dnsSupport: boolean;
@@ -52,7 +51,6 @@ export const devParameter: Parameter = {
 
   vpc: {
     id: "Vpc",
-    name: "ep01-vpc",
     cidrBlock: "10.0.0.0/16",
     dnsHost: true,
     dnsSupport: true,
@@ -62,7 +60,7 @@ export const devParameter: Parameter = {
   subnet: {
     id: "PrivateSubnetA",
     name: "ep01-subnet",
-    cidrBlock: "10.0.0.0/24",
+    cidrBlock: "10.0.1.0/24",
     availabilityZone: "ap-northeast-1a",
     tags: [{ key: "Name", value: "ep01-subnet" }],
   },
