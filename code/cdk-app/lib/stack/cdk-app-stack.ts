@@ -9,6 +9,7 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { Parameter } from "../../parameter";
 import { Network } from "../construct/network";
+import { Kms } from "../construct/kms";
 
 export class CdkAppStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Parameter) {
@@ -20,6 +21,11 @@ export class CdkAppStack extends cdk.Stack {
     const network = new Network(this, "Network", {
       vpc: props.vpc,
       subnet: props.subnet,
+    });
+
+    const kms = new Kms(this, "Kms", {
+      ebsCmk: props.ebsCmk,
+      backupCmk: props.backupCmk,
     });
   }
 }
