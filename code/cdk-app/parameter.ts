@@ -14,6 +14,7 @@
 ║ subnetInfo      │ Type defined L1 Construct subnet configuration information.                                                             ║
 ║ kmsInfo         │ Type defined L2 Construct KMS information.                                                                              ║
 ║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                               ║
+║ iamRole  Info   │ Type defined L2 Construct IAM Role information.                                                                         ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -48,6 +49,17 @@ export type iamPolicyInfo = {
   jsonFileName: string;
 };
 
+export type iamRoleInfo = {
+  id: string;
+  roleName: string;
+  assumed: string;
+  description: string;
+  customManagedPolicyAdd: boolean;
+  awsManagedPolicyAdd: boolean;
+  awsManagedPolicyName?: { policyName: string }[];
+  tags: { key: string; value: string }[];
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -60,6 +72,9 @@ export interface Parameter {
   ebsCmk: kmsInfo;
   backupCmk: kmsInfo;
   ltupdatePolicy: iamPolicyInfo;
+  lambdaRole: iamRoleInfo;
+  backupRole: iamRoleInfo;
+  ec2Role: iamRoleInfo;
 }
 
 /*
@@ -72,6 +87,9 @@ export interface Parameter {
 ║ ebsCmk          │ CMK for EBS.                                 ║
 ║ backupCmk       │ CMK for AWS Backup.                          ║
 ║ ltupdatePolicy  │ ltUpdate IAM Policy.                         ║
+║ lambdaRole      │ Lambda IAM Role.                             ║
+║ backupRole      │ AWS Backup IAM Role.                         ║
+║ ec2Role         │ EC2 IAM Role.                                ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -116,5 +134,48 @@ export const devParameter: Parameter = {
     policyName: "ep01-iam-policy-ltupdate",
     description: "ltUpdate IAM Policy",
     jsonFileName: "iam-policy-ltupdate.json",
+  },
+
+  lambdaRole: {
+    id: "LambdaRole",
+    roleName: "ep01-iam-role-lambda",
+    assumed: "lambda.amazonaws.com",
+    description: "Lambda Role",
+    customManagedPolicyAdd: true,
+    awsManagedPolicyAdd: true,
+    awsManagedPolicyName: [
+      {
+        policyName: "service-role/AWSLambdaBasicExecutionRole",
+      },
+    ],
+    tags: [{ key: "Name", value: "ep01-iam-role-lambda" }],
+  },
+
+  backupRole: {
+    id: "BackupRole",
+    roleName: "ep01-iam-role-backup",
+    assumed: "backup.amazonaws.com",
+    description: "AWS Backup Role",
+    customManagedPolicyAdd: false,
+    awsManagedPolicyAdd: true,
+    awsManagedPolicyName: [
+      {
+        policyName: "service-role/AWSBackupServiceRolePolicyForBackup",
+      },
+      {
+        policyName: "service-role/AWSBackupServiceRolePolicyForRestores",
+      },
+    ],
+    tags: [{ key: "Name", value: "ep01-iam-role-backup" }],
+  },
+
+  ec2Role: {
+    id: "EC2Role",
+    roleName: "ep01-iam-role-ec2",
+    assumed: "ec2.amazonaws.com",
+    description: "EC2 Role",
+    customManagedPolicyAdd: false,
+    awsManagedPolicyAdd: false,
+    tags: [{ key: "Name", value: "ep01-iam-role-ec2" }],
   },
 };
