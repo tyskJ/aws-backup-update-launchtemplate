@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCreateUpdateLaunchTemplate",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeImages",
+        "ec2:DescribeLaunchTemplates",
+        "ec2:DescribeLaunchTemplateVersions",
+        "ec2:ModifyLaunchTemplate",
+        "ec2:DeleteLaunchTemplateVersions",
+        "ec2:CreateLaunchTemplateVersion"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
