@@ -14,7 +14,8 @@
 ║ subnetInfo      │ Type defined L1 Construct subnet configuration information.                                                             ║
 ║ kmsInfo         │ Type defined L2 Construct KMS information.                                                                              ║
 ║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                               ║
-║ iamRole  Info   │ Type defined L2 Construct IAM Role information.                                                                         ║
+║ iamRoleInfo     │ Type defined L2 Construct IAM Role information.                                                                         ║
+║ bkvaultInfo     │ Type defined L2 Construct AWS Backup Vault information.                                                                 ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -60,6 +61,13 @@ export type iamRoleInfo = {
   tags: { key: string; value: string }[];
 };
 
+export type bkvaultInfo = {
+  id: string;
+  name: string;
+  removalPolicy: boolean;
+  tags: { key: string; value: string }[];
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -75,6 +83,7 @@ export interface Parameter {
   lambdaRole: iamRoleInfo;
   backupRole: iamRoleInfo;
   ec2Role: iamRoleInfo;
+  bkVault: bkvaultInfo;
 }
 
 /*
@@ -90,6 +99,7 @@ export interface Parameter {
 ║ lambdaRole      │ Lambda IAM Role.                             ║
 ║ backupRole      │ AWS Backup IAM Role.                         ║
 ║ ec2Role         │ EC2 IAM Role.                                ║
+║ bkVault         │ AWS Backup Vault.                            ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -177,5 +187,12 @@ export const devParameter: Parameter = {
     customManagedPolicyAdd: false,
     awsManagedPolicyAdd: false,
     tags: [{ key: "Name", value: "ep01-iam-role-ec2" }],
+  },
+
+  bkVault: {
+    id: "BkVault",
+    name: "ep01-bkvault",
+    removalPolicy: true,
+    tags: [{ key: "Name", value: "ep01-bkvault" }],
   },
 };
