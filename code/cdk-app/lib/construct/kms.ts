@@ -10,7 +10,7 @@ import { Construct } from "constructs";
 import { kmsInfo } from "../../parameter";
 import * as kms from "aws-cdk-lib/aws-kms";
 
-export interface KmsInfo {
+export interface KmsProps {
   ebsCmk: kmsInfo;
   backupCmk: kmsInfo;
 }
@@ -19,7 +19,7 @@ export class Kms extends Construct {
   public readonly ebsCmk: kms.Key;
   public readonly backupCmk: kms.Key;
 
-  constructor(scope: Construct, id: string, props: KmsInfo) {
+  constructor(scope: Construct, id: string, props: KmsProps) {
     super(scope, id);
 
     this.ebsCmk = new kms.Key(this, props.ebsCmk.id, {
