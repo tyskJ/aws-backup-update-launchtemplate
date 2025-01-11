@@ -47,6 +47,7 @@ export class CdkAppStack extends cdk.Stack {
       logGroup: props.logGroup,
       lambdaRole: iam.lambdaRole,
       fn: props.fn,
+      rule: props.rule,
     });
   }
 }

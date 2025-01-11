@@ -18,6 +18,7 @@
 ║ bkvaultInfo     │ Type defined L2 Construct AWS Backup Vault information.                                                                 ║
 ║ logsInfo        │ Type defined L1 Construct CloudWatch Logs LogGroup.                                                                     ║
 ║ lambdaInfo      │ Type defined L2 Construct Lambda Function.                                                                              ║
+║ ruleInfo        │ Type defined L2 Construct EventBridge Rule.                                                                             ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -85,6 +86,13 @@ export type lambdaInfo = {
   tags: { key: string; value: string }[];
 };
 
+export type ruleInfo = {
+  id: string;
+  ruleName: string;
+  description: string;
+  tags: { key: string; value: string }[];
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -103,6 +111,7 @@ export interface Parameter {
   bkVault: bkvaultInfo;
   logGroup: logsInfo;
   fn: lambdaInfo;
+  rule: ruleInfo;
 }
 
 /*
@@ -121,6 +130,7 @@ export interface Parameter {
 ║ bkVault         │ AWS Backup Vault.                            ║
 ║ logGroup        │ LogGroup for Lambda.                         ║
 ║ fn              │ Lambda Function.                             ║
+║ rule            │ EventBridge Rule.                            ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -230,5 +240,12 @@ export const devParameter: Parameter = {
     functionName: "ep01-lambda-function",
     description: "Launch Template Update Lambda Function",
     tags: [{ key: "Name", value: "ep01-lambda-function" }],
+  },
+
+  rule: {
+    id: "Rule",
+    ruleName: "ep01-rule",
+    description: "Backup Job State Completed Rule",
+    tags: [{ key: "Name", value: "ep01-rule" }],
   },
 };
