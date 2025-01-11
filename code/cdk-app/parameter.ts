@@ -19,6 +19,9 @@
 ║ logsInfo        │ Type defined L1 Construct CloudWatch Logs LogGroup.                                                                     ║
 ║ lambdaInfo      │ Type defined L2 Construct Lambda Function.                                                                              ║
 ║ ruleInfo        │ Type defined L2 Construct EventBridge Rule.                                                                             ║
+║ keypairInfo     │ Type defined L1 Construct KeyPair.                                                                                      ║
+║ secgInfo        │ Type defined L2 Construct SecurityGroup.                                                                                ║
+║ ec2Info         │ Type defined L1 Construct EC2 Instance.                                                                                 ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -93,6 +96,31 @@ export type ruleInfo = {
   tags: { key: string; value: string }[];
 };
 
+export type keypairInfo = {
+  id: string;
+  keyName: string;
+  keyType: string;
+  keyFormat: string;
+  removalPolicy: boolean;
+  tags: { key: string; value: string }[];
+};
+
+export type secgInfo = {
+  id: string;
+  sgName: string;
+  description: string;
+  tags: { key: string; value: string }[];
+};
+
+export type ec2Info = {
+  id: string;
+  instanceType: string;
+  apiTerm: boolean;
+  ebsOpt: boolean;
+  volSize: number;
+  tags: { key: string; value: string }[];
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -112,6 +140,9 @@ export interface Parameter {
   logGroup: logsInfo;
   fn: lambdaInfo;
   rule: ruleInfo;
+  keyPair: keypairInfo;
+  secg: secgInfo;
+  ec2: ec2Info;
 }
 
 /*
@@ -131,6 +162,9 @@ export interface Parameter {
 ║ logGroup        │ LogGroup for Lambda.                         ║
 ║ fn              │ Lambda Function.                             ║
 ║ rule            │ EventBridge Rule.                            ║
+║ keyPair         │ KeyPair.                                     ║
+║ secg            │ SecurityGroup.                               ║
+║ ec2             │ EC2 Instance.                                ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -247,5 +281,30 @@ export const devParameter: Parameter = {
     ruleName: "ep01-rule",
     description: "Backup Job State Completed Rule",
     tags: [{ key: "Name", value: "ep01-rule" }],
+  },
+
+  keyPair: {
+    id: "KeyPair",
+    keyName: "ep01-keypair",
+    keyType: "rsa",
+    keyFormat: "pem",
+    removalPolicy: true,
+    tags: [{ key: "Name", value: "ep01-keypair" }],
+  },
+
+  secg: {
+    id: "SecurityGroup",
+    sgName: "ep01-sg",
+    description: "SG for EC2",
+    tags: [{ key: "Name", value: "ep01-sg" }],
+  },
+
+  ec2: {
+    id: "EC2Instance",
+    instanceType: "t2.micro",
+    apiTerm: false,
+    ebsOpt: false,
+    volSize: 30,
+    tags: [{ key: "Name", value: "ep01-ec2" }],
   },
 };

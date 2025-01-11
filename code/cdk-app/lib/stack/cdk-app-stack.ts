@@ -13,6 +13,7 @@ import { Kms } from "../construct/kms";
 import { Iam } from "../construct/iam";
 import { AwsBackup } from "../construct/awsbackup";
 import { Observe } from "../construct/observe";
+import { Ec2 } from "../construct/ec2";
 
 export class CdkAppStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Parameter) {
@@ -48,6 +49,16 @@ export class CdkAppStack extends cdk.Stack {
       lambdaRole: iam.lambdaRole,
       fn: props.fn,
       rule: props.rule,
+    });
+
+    const ec2 = new Ec2(this, "Ec2", {
+      vpc: network.vpc,
+      subnet: network.subnet,
+      ebsCmk: kms.ebsCmk,
+      ec2Role: iam.ec2Role,
+      keyPair: props.keyPair,
+      secg: props.secg,
+      ec2: props.ec2,
     });
   }
 }
