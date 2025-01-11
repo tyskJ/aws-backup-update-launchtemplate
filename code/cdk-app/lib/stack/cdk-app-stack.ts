@@ -12,6 +12,7 @@ import { Network } from "../construct/network";
 import { Kms } from "../construct/kms";
 import { Iam } from "../construct/iam";
 import { AwsBackup } from "../construct/awsbackup";
+import { Observe } from "../construct/observe";
 
 export class CdkAppStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Parameter) {
@@ -40,6 +41,12 @@ export class CdkAppStack extends cdk.Stack {
     const awsBackup = new AwsBackup(this, "AwsBackup", {
       bkVault: props.bkVault,
       backupCmk: kms.backupCmk,
+    });
+
+    const observe = new Observe(this, "Observe", {
+      logGroup: props.logGroup,
+      lambdaRole: iam.lambdaRole,
+      fn: props.fn,
     });
   }
 }

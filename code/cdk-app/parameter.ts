@@ -16,6 +16,8 @@
 ║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                               ║
 ║ iamRoleInfo     │ Type defined L2 Construct IAM Role information.                                                                         ║
 ║ bkvaultInfo     │ Type defined L2 Construct AWS Backup Vault information.                                                                 ║
+║ logsInfo        │ Type defined L1 Construct CloudWatch Logs LogGroup.                                                                     ║
+║ lambdaInfo      │ Type defined L2 Construct Lambda Function.                                                                              ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -68,6 +70,21 @@ export type bkvaultInfo = {
   tags: { key: string; value: string }[];
 };
 
+export type logsInfo = {
+  id: string;
+  logGroupName: string;
+  removalPolicy: boolean;
+  retention: number;
+  tags: { key: string; value: string }[];
+};
+
+export type lambdaInfo = {
+  id: string;
+  description: string;
+  functionName: string;
+  tags: { key: string; value: string }[];
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -84,6 +101,8 @@ export interface Parameter {
   backupRole: iamRoleInfo;
   ec2Role: iamRoleInfo;
   bkVault: bkvaultInfo;
+  logGroup: logsInfo;
+  fn: lambdaInfo;
 }
 
 /*
@@ -100,6 +119,8 @@ export interface Parameter {
 ║ backupRole      │ AWS Backup IAM Role.                         ║
 ║ ec2Role         │ EC2 IAM Role.                                ║
 ║ bkVault         │ AWS Backup Vault.                            ║
+║ logGroup        │ LogGroup for Lambda.                         ║
+║ fn              │ Lambda Function.                             ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -194,5 +215,20 @@ export const devParameter: Parameter = {
     name: "ep01-bkvault",
     removalPolicy: true,
     tags: [{ key: "Name", value: "ep01-bkvault" }],
+  },
+
+  logGroup: {
+    id: "LogGroup",
+    logGroupName: "ep01-loggroup",
+    removalPolicy: true,
+    retention: 1,
+    tags: [{ key: "Name", value: "ep01-loggroup" }],
+  },
+
+  fn: {
+    id: "LambdaFunction",
+    functionName: "ep01-lambda-function",
+    description: "Launch Template Update Lambda Function",
+    tags: [{ key: "Name", value: "ep01-lambda-function" }],
   },
 };
