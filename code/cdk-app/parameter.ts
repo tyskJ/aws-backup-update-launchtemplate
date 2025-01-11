@@ -305,6 +305,9 @@ export const devParameter: Parameter = {
     apiTerm: false,
     ebsOpt: false,
     volSize: 30,
-    tags: [{ key: "Name", value: "ep01-ec2" }],
+    tags: [
+      { key: "Name", value: "ep01-ec2" },
+      { key: "Backup", value: "lt1" },
+    ],
   },
 };
