@@ -63,7 +63,7 @@ export class Observe extends Construct {
         source: ["aws.backup"],
         detailType: ["Backup Job State Change"],
         detail: {
-          status: ["COMPLETED"],
+          state: ["COMPLETED"],
         },
       },
       targets: [new targets.LambdaFunction(fn, {})],
