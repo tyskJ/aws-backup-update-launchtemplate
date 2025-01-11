@@ -30,11 +30,11 @@ export class Iam extends Construct {
 
     const ltupdatePolicy = this.createIamPolicy(this, props.ltupdatePolicy);
 
-    const lambdaRole = this.createIamRole(this, props.lambdaRole, [
+    this.lambdaRole = this.createIamRole(this, props.lambdaRole, [
       ltupdatePolicy,
     ]);
-    const backupRole = this.createIamRole(this, props.backupRole);
-    const ec2Role = this.createIamRole(this, props.ec2Role);
+    this.backupRole = this.createIamRole(this, props.backupRole);
+    this.ec2Role = this.createIamRole(this, props.ec2Role);
   }
   /*
   ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -66,7 +66,7 @@ export class Iam extends Construct {
     scope: Construct,
     roleInfo: iamRoleInfo,
     managedPolicy?: iam.ManagedPolicy[]
-  ) {
+  ): iam.Role {
     const iamRole = new iam.Role(scope, roleInfo.id, {
       roleName: roleInfo.roleName,
       description: roleInfo.description,
@@ -87,5 +87,6 @@ export class Iam extends Construct {
     for (const tag of roleInfo.tags) {
       cdk.Tags.of(iamRole).add(tag.key, tag.value);
     }
+    return iamRole;
   }
 }
