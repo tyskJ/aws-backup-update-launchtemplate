@@ -13,6 +13,7 @@
 ║ vpcInfo         │ Type defined L1 Construct vpc configuration information.                                                                ║
 ║ subnetInfo      │ Type defined L1 Construct subnet configuration information.                                                             ║
 ║ kmsInfo         │ Type defined L2 Construct KMS information.                                                                              ║
+║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                               ║
 ╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
@@ -40,6 +41,13 @@ export type kmsInfo = {
   tags: { key: string; value: string }[];
 };
 
+export type iamPolicyInfo = {
+  id: string;
+  policyName: string;
+  description: string;
+  jsonFileName: string;
+};
+
 /*
 ╔════════════════════════════════════════════════════════════════╗
 ║ Interface Parameter                                            ║
@@ -51,6 +59,7 @@ export interface Parameter {
   subnet: subnetInfo;
   ebsCmk: kmsInfo;
   backupCmk: kmsInfo;
+  ltupdatePolicy: iamPolicyInfo;
 }
 
 /*
@@ -62,6 +71,7 @@ export interface Parameter {
 ║ subnet          │ Private Subnet.                              ║
 ║ ebsCmk          │ CMK for EBS.                                 ║
 ║ backupCmk       │ CMK for AWS Backup.                          ║
+║ ltupdatePolicy  │ ltUpdate IAM Policy.                         ║
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
@@ -99,5 +109,12 @@ export const devParameter: Parameter = {
     keyRotation: true,
     pendingWindow: 7,
     tags: [{ key: "Name", value: "ep01-backup-cmk" }],
+  },
+
+  ltupdatePolicy: {
+    id: "LtupdatePolicy",
+    policyName: "ep01-iam-policy-ltupdate",
+    description: "ltUpdate IAM Policy",
+    jsonFileName: "iam-policy-ltupdate.json",
   },
 };
