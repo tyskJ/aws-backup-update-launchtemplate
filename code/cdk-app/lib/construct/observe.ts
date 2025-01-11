@@ -11,14 +11,17 @@ import * as logs from "aws-cdk-lib/aws-logs";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as events from "aws-cdk-lib/aws-events";
+import * as targets from "aws-cdk-lib/aws-events-targets";
 import { logsInfo } from "../../parameter";
 import { lambdaInfo } from "../../parameter";
+import { ruleInfo } from "../../parameter";
 import path = require("path");
 
 export interface ObserveProps {
   logGroup: logsInfo;
   lambdaRole: iam.Role;
   fn: lambdaInfo;
+  rule: ruleInfo;
 }
 
 export class Observe extends Construct {
@@ -51,6 +54,22 @@ export class Observe extends Construct {
     });
     for (const tag of props.fn.tags) {
       cdk.Tags.of(fn).add(tag.key, tag.value);
+    }
+
+    const rule = new events.Rule(this, props.rule.id, {
+      ruleName: props.rule.ruleName,
+      description: props.rule.description,
+      eventPattern: {
+        source: ["aws.backup"],
+        detailType: ["Backup Job State Change"],
+        detail: {
+          status: ["COMPLETED"],
+        },
+      },
+      targets: [new targets.LambdaFunction(fn, {})],
+    });
+    for (const tag of props.rule.tags) {
+      cdk.Tags.of(rule).add(tag.key, tag.value);
     }
   }
 }
