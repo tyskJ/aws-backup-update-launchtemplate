@@ -72,15 +72,15 @@ export class Iam extends Construct {
       description: roleInfo.description,
       assumedBy: new iam.ServicePrincipal(roleInfo.assumed),
     });
-    if (roleInfo.awsManagedPolicyAdd) {
-      for (const amp of roleInfo.awsManagedPolicyName!) {
+    if (roleInfo.awsManagedPolicyAdd && roleInfo.awsManagedPolicyName) {
+      for (const amp of roleInfo.awsManagedPolicyName) {
         iamRole.addManagedPolicy(
           iam.ManagedPolicy.fromAwsManagedPolicyName(amp.policyName)
         );
       }
     }
-    if (roleInfo.customManagedPolicyAdd) {
-      for (const cmp of managedPolicy!) {
+    if (roleInfo.customManagedPolicyAdd && managedPolicy) {
+      for (const cmp of managedPolicy) {
         iamRole.addManagedPolicy(cmp);
       }
     }
