@@ -57,7 +57,7 @@
 
   aws cloudformation deploy \
   --template-file ltupdate-out.yaml \
-  --stack-name EP01 \
+  --stack-name EP01STACK \
   --s3-bucket ep001-cfn-$DATE \
   --s3-prefix cfn \
   --capabilities CAPABILITY_NAMED_IAM --profile admin
@@ -74,7 +74,7 @@
 .. code-block:: bash
 
   aws cloudformation delete-stack \
-  --stack-name EP01 --profile admin
+  --stack-name EP01STACK --profile admin
 
 3. CFnテンプレート&Lambdaコード用S3バケット削除
 ----------------------------------------------
