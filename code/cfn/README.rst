@@ -65,14 +65,18 @@
 
 後片付け - ローカル -
 ==============================
-1. CloudFormation Stack削除
+1. 復旧ポイント削除
+-----------------------
+* AWS Backup Vaultに存在する復旧ポイントを削除
+
+2. CloudFormation Stack削除
 ------------------------------
 .. code-block:: bash
 
   aws cloudformation delete-stack \
   --stack-name EP01 --profile admin
 
-2. CFnテンプレート&Lambdaコード用S3バケット削除
+3. CFnテンプレート&Lambdaコード用S3バケット削除
 ----------------------------------------------
 .. code-block:: bash
 

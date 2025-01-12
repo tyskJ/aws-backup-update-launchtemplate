@@ -89,20 +89,22 @@
 
 後片付け - ローカル -
 ==============================
-1. 環境削除
+1. 復旧ポイント削除
+-----------------------
+* AWS Backup Vaultに存在する復旧ポイントを削除
+
+2. 環境削除
 --------------
 .. code-block:: bash
 
   terraform destroy
 
-2. *tfstate* 用S3バケット削除
+3. *tfstate* 用S3バケット削除
 ------------------------------
 .. code-block:: bash
 
   aws s3 rm s3://ep01-tf-2025/ --recursive --profile admin
   aws s3 rb s3://ep01-tf-2025 --profile admin
-
-
 
 参考資料
 ===============================
