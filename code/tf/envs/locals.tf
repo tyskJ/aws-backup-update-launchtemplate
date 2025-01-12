@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform locals.tf locals                                           ║
+# ║ Ep.001 Launch Template Update Solution - Terraform locals.tf locals                                           ║
 # ╠══════════════════════════╤═══════════════════════════════════════════════════════════════════════════════════╣
 # ║ env                      │ Environment value.                                                                ║
 # ║ keypair_name             │ KeyPair name.                                                                     ║
@@ -7,7 +7,7 @@
 # ╚══════════════════════════╧═══════════════════════════════════════════════════════════════════════════════════╝
 
 locals {
-  env              = "ep01"
+  env              = "ep001"
   keypair_name     = "${local.env}-keypair"
   private_key_file = "./.keypair/${local.keypair_name}.pem"
 }

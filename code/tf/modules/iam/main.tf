@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
 # ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ltupdate_policy         │ aws_iam_policy                    │ IAM policy for Launch Template Update.                                              ║
 # ║ ec2_role                │ aws_iam_role                      │ IAM role for EC2.                                                                   ║

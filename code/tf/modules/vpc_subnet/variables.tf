@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform variables.tf variable                                                                   ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                   ║
 # ╠═════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ vpc_map         │ map(string)                       │ VPC settings map.                                                                   ║
 # ║ subnet_map      │ map(string)                       │ Subnet settings map.                                                                ║

@@ -1,6 +1,6 @@
 /*
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ Ep.01 Launch Template Update Solution - Cloud Development Kit parameter.ts                                                               ║
+║ Ep.001 Launch Template Update Solution - Cloud Development Kit parameter.ts                                                               ║
 ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║ This file that defines the parameters for each resource.                                                                                 ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -168,22 +168,22 @@ export interface Parameter {
 ╚═════════════════╧══════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
-  AppName: "ep01",
+  AppName: "ep001",
 
   vpc: {
     id: "Vpc",
     cidrBlock: "10.0.0.0/16",
     dnsHost: true,
     dnsSupport: true,
-    tags: [{ key: "Name", value: "ep01-vpc" }],
+    tags: [{ key: "Name", value: "ep001-vpc" }],
   },
 
   subnet: {
     id: "PrivateSubnetA",
-    name: "ep01-subnet",
+    name: "ep001-subnet",
     cidrBlock: "10.0.1.0/24",
     availabilityZone: "ap-northeast-1a",
-    tags: [{ key: "Name", value: "ep01-subnet" }],
+    tags: [{ key: "Name", value: "ep001-subnet" }],
   },
 
   ebsCmk: {
@@ -192,7 +192,7 @@ export const devParameter: Parameter = {
     description: "CMK for EBS",
     keyRotation: true,
     pendingWindow: 7,
-    tags: [{ key: "Name", value: "ep01-ebs-cmk" }],
+    tags: [{ key: "Name", value: "ep001-ebs-cmk" }],
   },
 
   backupCmk: {
@@ -201,19 +201,19 @@ export const devParameter: Parameter = {
     description: "CMK for AWS Backup",
     keyRotation: true,
     pendingWindow: 7,
-    tags: [{ key: "Name", value: "ep01-backup-cmk" }],
+    tags: [{ key: "Name", value: "ep001-backup-cmk" }],
   },
 
   ltupdatePolicy: {
     id: "LtupdatePolicy",
-    policyName: "ep01-iam-policy-ltupdate",
+    policyName: "ep001-iam-policy-ltupdate",
     description: "ltUpdate IAM Policy",
     jsonFileName: "iam-policy-ltupdate.json",
   },
 
   lambdaRole: {
     id: "LambdaRole",
-    roleName: "ep01-iam-role-lambda",
+    roleName: "ep001-iam-role-lambda",
     assumed: "lambda.amazonaws.com",
     description: "Lambda Role",
     customManagedPolicyAdd: true,
@@ -223,12 +223,12 @@ export const devParameter: Parameter = {
         policyName: "service-role/AWSLambdaBasicExecutionRole",
       },
     ],
-    tags: [{ key: "Name", value: "ep01-iam-role-lambda" }],
+    tags: [{ key: "Name", value: "ep001-iam-role-lambda" }],
   },
 
   backupRole: {
     id: "BackupRole",
-    roleName: "ep01-iam-role-backup",
+    roleName: "ep001-iam-role-backup",
     assumed: "backup.amazonaws.com",
     description: "AWS Backup Role",
     customManagedPolicyAdd: false,
@@ -241,62 +241,62 @@ export const devParameter: Parameter = {
         policyName: "service-role/AWSBackupServiceRolePolicyForRestores",
       },
     ],
-    tags: [{ key: "Name", value: "ep01-iam-role-backup" }],
+    tags: [{ key: "Name", value: "ep001-iam-role-backup" }],
   },
 
   ec2Role: {
     id: "EC2Role",
-    roleName: "ep01-iam-role-ec2",
+    roleName: "ep001-iam-role-ec2",
     assumed: "ec2.amazonaws.com",
     description: "EC2 Role",
     customManagedPolicyAdd: false,
     awsManagedPolicyAdd: false,
-    tags: [{ key: "Name", value: "ep01-iam-role-ec2" }],
+    tags: [{ key: "Name", value: "ep001-iam-role-ec2" }],
   },
 
   bkVault: {
     id: "BkVault",
-    name: "ep01-bkvault",
+    name: "ep001-bkvault",
     removalPolicy: true,
-    tags: [{ key: "Name", value: "ep01-bkvault" }],
+    tags: [{ key: "Name", value: "ep001-bkvault" }],
   },
 
   logGroup: {
     id: "LogGroup",
-    logGroupName: "ep01-loggroup",
+    logGroupName: "ep001-loggroup",
     removalPolicy: true,
     retention: 1,
-    tags: [{ key: "Name", value: "ep01-loggroup" }],
+    tags: [{ key: "Name", value: "ep001-loggroup" }],
   },
 
   fn: {
     id: "LambdaFunction",
-    functionName: "ep01-lambda-function",
+    functionName: "ep001-lambda-function",
     description: "Launch Template Update Lambda Function",
-    tags: [{ key: "Name", value: "ep01-lambda-function" }],
+    tags: [{ key: "Name", value: "ep001-lambda-function" }],
   },
 
   rule: {
     id: "Rule",
-    ruleName: "ep01-rule",
+    ruleName: "ep001-rule",
     description: "Backup Job State Completed Rule",
-    tags: [{ key: "Name", value: "ep01-rule" }],
+    tags: [{ key: "Name", value: "ep001-rule" }],
   },
 
   keyPair: {
     id: "KeyPair",
-    keyName: "ep01-keypair",
+    keyName: "ep001-keypair",
     keyType: "rsa",
     keyFormat: "pem",
     removalPolicy: true,
-    tags: [{ key: "Name", value: "ep01-keypair" }],
+    tags: [{ key: "Name", value: "ep001-keypair" }],
   },
 
   secg: {
     id: "SecurityGroup",
-    sgName: "ep01-sg",
+    sgName: "ep001-sg",
     description: "SG for EC2",
-    tags: [{ key: "Name", value: "ep01-sg" }],
+    tags: [{ key: "Name", value: "ep001-sg" }],
   },
 
   ec2: {
@@ -306,7 +306,7 @@ export const devParameter: Parameter = {
     ebsOpt: false,
     volSize: 30,
     tags: [
-      { key: "Name", value: "ep01-ec2" },
+      { key: "Name", value: "ep001-ec2" },
       { key: "Backup", value: "lt1" },
     ],
   },

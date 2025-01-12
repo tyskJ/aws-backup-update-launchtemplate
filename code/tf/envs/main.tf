@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform main.tf module                                                                          ║
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf module                                                                          ║
 # ╠═════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ nw              │ ./modules/vpc_subnet              │ invoke network module.                                                              ║
 # ║ iam             │ ./modules/iam                     │ invoke iam module.                                                                  ║

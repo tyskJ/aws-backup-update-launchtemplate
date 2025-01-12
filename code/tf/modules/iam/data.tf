@@ -1,5 +1,5 @@
 # ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform data.tf data                                                                                  ║
+# ║ Ep.001 Launch Template Update Solution - Terraform data.tf data                                                                                  ║
 # ╠═══════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ec2_trust_policy      │ aws_iam_policy_document           │ Trust policy for EC2.                                                               ║
 # ║ lambda_trust_policy   │ aws_iam_policy_document           │ Trust policy for Lambda.                                                            ║

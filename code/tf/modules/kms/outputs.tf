@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform outputs.tf output                                                                      ║
+# ║ Ep.001 Launch Template Update Solution - Terraform outputs.tf output                                                                      ║
 # ╠═════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 # ║ backup_kms_key_arn          │ KMS Key Arn for backup kms key.                                                                            ║
 # ║ ec2_kms_key_id              │ KMS Key Id for EC2 kms key.                                                                                ║

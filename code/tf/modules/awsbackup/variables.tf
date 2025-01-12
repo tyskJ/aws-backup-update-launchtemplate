@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform variables.tf variable                                                                           ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                           ║
 # ╠════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ bkvault_name           │ string                            │ AWS Backup Vault name.                                                              ║
 # ║ kms_key_arn            │ string                            │ KMS Key Arn for AWS Backup Vault.                                                   ║

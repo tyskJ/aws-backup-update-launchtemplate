@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
 # ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ec2_cmk                 │ aws_kms_key                       │ EC2 CMK.                                                                            ║
 # ║ backup_cmk              │ aws_kms_key                       │ AWS Backup CMK.                                                                     ║

@@ -1,6 +1,6 @@
 /*
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ Ep.01 Launch Template Update Solution - Cloud Development Kit observe.ts                                                                 ║
+║ Ep.001 Launch Template Update Solution - Cloud Development Kit observe.ts                                                                 ║
 ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║ This construct creates an L2 Construct EventBridge Rule, Lambda Function and L1 Construct LogGroup.                                      ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝

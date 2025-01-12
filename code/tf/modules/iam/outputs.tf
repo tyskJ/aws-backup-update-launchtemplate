@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform outputs.tf output                                                                      ║
+# ║ Ep.001 Launch Template Update Solution - Terraform outputs.tf output                                                                      ║
 # ╠═════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ec2_instance_profile_name   │ EC2 instance profile name.                                                                                 ║
 # ║ lambda_role_arn             │ Lambda IAM Role Arn.                                                                                       ║

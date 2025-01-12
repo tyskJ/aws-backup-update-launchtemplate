@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - CloudFormation Template                                                                                          ║
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template                                                                                          ║
 # ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Launch Template Update Solution Stack."
@@ -17,7 +17,7 @@ Metadata:
           - VolumeSize
 
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Parameters                                                                                                   ║
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Parameters                                                                                                   ║
 # ╠═══════════════════════╤═══════════════════════════════════════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════╣
 # ║ LatestAmiId           │ AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>   │ Latest Amazon Linux 2023 AMI ID.                                                                 ║
 # ║ InstanceType          │ String                                            │ EC2 Instance Type.                                                                               ║
@@ -42,7 +42,7 @@ Parameters:
     MaxValue: 100
 
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Mappings                                                                         ║
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Mappings                                                                         ║
 # ╠═════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 # ║ CMKParams           │ KMS CMK parameters.                                                                                                        ║
 # ║ IAMParams           │ IAM Role parameters.                                                                                                       ║
@@ -59,7 +59,7 @@ Mappings:
       Ec2: Ec2Role
 
 # ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - CloudFormation Template Resources                                                                                               ║
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Resources                                                                                               ║
 # ╠═════════════════════════════════════╤═════════════════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ BackupCmk                           │ AWS::KMS::Key                               │ CMK for AWS Backup.                                                                 ║
 # ║ EbsCmk                              │ AWS::KMS::Key                               │ CMK for Amazon EBS.                                                                 ║

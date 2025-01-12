@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
 # ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ lg_lambda               │ aws_cloudwatch_log_group          │ LogGroup for Lambda Function.                                                       ║
 # ║ lambda_function         │ aws_lambda_function               │ Lambda Function.                                                                    ║

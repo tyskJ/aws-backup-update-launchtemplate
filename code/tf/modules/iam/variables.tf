@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform variables.tf variable                                                                          ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                          ║
 # ╠════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ec2_role_name          │ string                            │ EC2 IAM Role name.                                                                  ║
 # ║ lambda_role_name       │ string                            │ Lambda IAM Role name.                                                               ║

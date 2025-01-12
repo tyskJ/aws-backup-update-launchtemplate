@@ -1,6 +1,6 @@
 /*
 ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ Ep.01 Launch Template Update Solution - Cloud Development Kit ec2.ts                                                                     ║
+║ Ep.001 Launch Template Update Solution - Cloud Development Kit ec2.ts                                                                     ║
 ╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 ║ This construct creates an L1 Construct SecurityGroup, KeyPair, Instance Profile, EC2 Instance.                           ║
 ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -109,7 +109,7 @@ export class Ec2 extends Construct {
             tags: [
               {
                 key: "Name",
-                value: "ep01-ec2",
+                value: "ep001-ec2",
               },
               {
                 key: "Backup",

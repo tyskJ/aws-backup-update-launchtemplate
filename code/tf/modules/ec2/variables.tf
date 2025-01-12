@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform variables.tf variable                                                                          ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                          ║
 # ╠════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ private_key_file_name  │ string                            │ SSH public key file name.                                                           ║
 # ║ key_name               │ string                            │ KeyPair name.                                                                       ║

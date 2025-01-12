@@ -1,5 +1,5 @@
 # ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.01 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
 # ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ssh_keygen              │ tls_private_key                   │ setting SSH keygen algorithm.                                                       ║
 # ║ keypair_pem             │ local_sensitive_file              │ create private key file to local.                                                   ║

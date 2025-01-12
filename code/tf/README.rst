@@ -65,7 +65,7 @@
 -------------------------------
 .. code-block:: bash
 
-  aws s3 mb s3://ep01-tf-2025 --profile admin
+  aws s3 mb s3://ep001-tf-2025 --profile admin
 
 .. note::
 
@@ -108,8 +108,8 @@
 ------------------------------
 .. code-block:: bash
 
-  aws s3 rm s3://ep01-tf-2025/ --recursive --profile admin
-  aws s3 rb s3://ep01-tf-2025 --profile admin
+  aws s3 rm s3://ep001-tf-2025/ --recursive --profile admin
+  aws s3 rb s3://ep001-tf-2025 --profile admin
 
 .. note::
 
