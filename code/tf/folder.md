@@ -4,7 +4,7 @@
 
 ```
 `-- tf
-    |-- README.folder.md
+    |-- folder.md
     |-- README.rst
     |-- envs
     |   |-- backend.tf                   tfstateファイル管理設定ファイル
