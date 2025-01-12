@@ -69,7 +69,7 @@ def lambda_handler(event, context):
       description_response = ec2.describe_launch_template_versions(
           LaunchTemplateId = lt_id
       )
-      description = description_response['LaunchTemplateVersions'][0]['VersionDescription']
+      description = description_response['LaunchTemplateVersions'][0].get('VersionDescription', '')
 
       # 新しいバージョンの起動テンプレートを作成
       create_response = ec2.create_launch_template_version(
