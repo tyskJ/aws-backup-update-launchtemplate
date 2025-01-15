@@ -6,7 +6,7 @@
 ==============================
 * 64bit版 Windows 11 Pro
 * Visual Studio Code 1.96.2 (Default Terminal: Git Bash)
-* Git 2.45.0.windows.1
+* Git 2.47.1.windows.2
 * tenv v4.1.0
 * Terraform v1.10.3
 
