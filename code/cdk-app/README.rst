@@ -58,7 +58,14 @@
   npm install -g typescript
 
 .. note::
+
   * 以下のようなエラーが出た場合
+
+  .. code-block:: bash
+
+    error code UNABLE_TO_GET_ISSUER_CERT_LOCALL
+    error errno UNABLE_TO_GET_ISSUER_CERT_LOCALLY
+    error request to https://registry.npmjs.org/typescript failed, reason: unable to get local issuer certificate
 
 5. *aws-cdk* のグローバルインストール
 ---------------------------------------
