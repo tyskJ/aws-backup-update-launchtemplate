@@ -71,10 +71,9 @@
   * 企業など、クラウド型や自社内のproxyを使っている環境で発生したりします
   * OSの証明書ストアを更新する方法もありますが、今回は *node* の環境変数に該当の証明書のパスを指定することで、 *node* の証明書を認識させ対応する方法を記載します
 
-  * shell環境
-
   .. code-block:: bash
 
+    # shell環境
     export NODE_EXTRA_CA_CERTS=/path/to/certificate.pem # 証明書の絶対パスを指定
     
 
