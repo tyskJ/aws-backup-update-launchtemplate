@@ -73,10 +73,15 @@
 
   .. code-block:: bash
 
-    # shell環境
+    :caption: shell
     export NODE_EXTRA_CA_CERTS=/path/to/certificate.pem # 証明書の絶対パスを指定
     touch ~/.bashrc # .bashrcがない場合実行
     sed -i '$aexport NODE_EXTRA_CA_CERTS=/path/to/certificate.pem' ~/.bashrc
+
+  .. code-block:: powershell
+
+    :caption: powershell
+    $env:NODE_EXTRA_CA_CERTS="C:\path\to\certificate.pem"
     
 
 5. *aws-cdk* のグローバルインストール
