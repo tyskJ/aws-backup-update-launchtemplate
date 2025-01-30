@@ -67,6 +67,17 @@
     error errno UNABLE_TO_GET_ISSUER_CERT_LOCALLY
     error request to https://registry.npmjs.org/typescript failed, reason: unable to get local issuer certificate
 
+  * 上記のエラーは証明書エラー
+  * 企業など、クラウド型や自社内のproxyを使っている環境で発生したりします
+  * OSの証明書ストアを更新する方法もありますが、今回は *node* の環境変数に該当の証明書のパスを指定することで、 *node* の証明書を認識させ対応する方法を記載します
+
+  1. shell環境
+  --------------
+  .. code-block:: bash
+
+    export NODE_EXTRA_CA_CERTS=/path/to/certificate.pem # 証明書の絶対パスを指定
+    
+
 5. *aws-cdk* のグローバルインストール
 ---------------------------------------
 .. code-block:: bash
