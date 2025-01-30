@@ -57,6 +57,9 @@
 
   npm install -g typescript
 
+.. note::
+  * 以下のようなエラーが出た場合
+
 5. *aws-cdk* のグローバルインストール
 ---------------------------------------
 .. code-block:: bash
