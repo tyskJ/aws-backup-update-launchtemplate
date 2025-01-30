@@ -75,6 +75,7 @@
 
     # shell環境
     export NODE_EXTRA_CA_CERTS=/path/to/certificate.pem # 証明書の絶対パスを指定
+    touch ~/.bashrc # .bashrcがない場合実行
     
 
 5. *aws-cdk* のグローバルインストール
