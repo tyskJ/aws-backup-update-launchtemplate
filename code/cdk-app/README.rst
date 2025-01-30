@@ -72,8 +72,8 @@
   * OSの証明書ストアを更新する方法もありますが、今回は *node* の環境変数に該当の証明書のパスを指定することで、 *node* の証明書を認識させ対応する方法を記載します
 
   .. code-block:: bash
-    :caption: shell
 
+    # shell
     export NODE_EXTRA_CA_CERTS=/path/to/certificate.pem # 証明書の絶対パスを指定
     touch ~/.bashrc # .bashrcがない場合実行
     sed -i '$aexport NODE_EXTRA_CA_CERTS=/path/to/certificate.pem' ~/.bashrc
@@ -81,6 +81,7 @@
   .. code-block:: powershell
     :caption: powershell
 
+    # powershell
     $env:NODE_EXTRA_CA_CERTS="C:\path\to\certificate.pem"
     
 
