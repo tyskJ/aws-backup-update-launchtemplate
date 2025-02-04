@@ -87,11 +87,11 @@
 ===============================
 リファレンス
 -------------------------------
-* https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html
-* https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html
+* `AWS CLI Command Reference <https://awscli.amazonaws.com/v2/documentation/api/latest/reference/index.html>`_
+* `AWS CloudFormation ユーザーガイド <https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html>`_
 
 ブログ
 -------------------------------
-* https://www.python.digibeatrix.com/archives/990
-* https://dev.classmethod.jp/articles/understanding-codeuri-property-and-deployment-package-in-serverless-application-model/#toc-
-* https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/
+* `PythonでUTF-8エンコーディングを正しく扱う方法 <https://www.python.digibeatrix.com/archives/990>`_
+* `Serverless Application ModelのCodeUriプロパティとデプロイメントパッケージの関係を理解する <https://dev.classmethod.jp/articles/understanding-codeuri-property-and-deployment-package-in-serverless-application-model/#toc->`_
+* `特定タグが設定されたAMIが作成された時に自動で起動テンプレートを更新する <https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/>`_

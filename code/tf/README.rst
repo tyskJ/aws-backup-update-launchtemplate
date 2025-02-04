@@ -26,38 +26,9 @@
 
 事前作業(1)
 ==============================
-1. *tenv* (Terraformバージョンマネージャー)リリースバイナリダウンロード
---------------------------------------------------------------------
-* `GitHub <https://github.com/tofuutils/tenv/releases>`_ から64bit版バイナリ( *tenv_v4.1.0_Windows_x86_64.zip* )をダウンロード
-
-2. バイナリデータを任意のフォルダに解凍
--------------------------------------
-.. code-block:: bash
-
-  mkdir -p ~/tofuutils/tenv/
-  unzip -d ~/tofuutils/tenv/ ~/Downloads/tenv_v4.1.0_Windows_x86_64.zip
-  rm ~/Downloads/tenv_v4.1.0_Windows_x86_64.zip
-
-3. ディレクトリにPATHを通す
--------------------------------------
-.. code-block:: bash
-
-  export PATH=$PATH:$HOME/tofuutils/tenv/
-  touch ~/.bashrc # .bashrcがない場合実行
-  sed -i '$aexport PATH=$PATH:$HOME/tofuutils/tenv/' ~/.bashrc
-
-4. *Terraform* 最新版インストール
---------------------------------------
-.. code-block:: bash
-
-  tenv tf install latest # ~/.tenv/Terraform/バージョン番号/に保存される
-
-5. *v.1.10.3* を使用
---------------------------------------
-.. code-block:: bash
-
-  tenv tf list # インストールしたバージョンを確認
-  tenv tf use v1.10.3
+1. 各種モジュールインストール
+---------------------------------------------------------------------------------------
+* `GitHub <https://github.com/tyskJ/common-environment-setup>`_ を参照
 
 事前作業(2)
 ==============================
@@ -119,16 +90,15 @@
 ===============================
 リファレンス
 -------------------------------
-* https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-* https://www.toptal.com/developers/gitignore
-* https://spacelift.io/blog/terraform-best-practices
+* `Terraform Registry <https://registry.terraform.io/providers/hashicorp/aws/latest/docs>`_
+* `gitignore.io <https://www.toptal.com/developers/gitignore>`_
+* `20 Terraform Best Practices to Improve your TF workflow <https://spacelift.io/blog/terraform-best-practices>`_
 
 ブログ
 -------------------------------
-* https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/
-* https://dev.classmethod.jp/articles/try-tenv-terraform-version-manager/
-* https://dev.classmethod.jp/articles/terraform-bset-practice-jp/
-* https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16
-* https://www.ntt-tx.co.jp/column/iac/231204/
-* https://tech.nri-net.com/entry/how_to_operate_local_files_with_terraform
-* https://dev.classmethod.jp/articles/retrieve-latest-ami-id-of-amazonlinux-2023/
+* `特定タグが設定されたAMIが作成された時に自動で起動テンプレートを更新する <https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/>`_
+* `Terraform ベストプラクティスを整理してみました。 <https://dev.classmethod.jp/articles/terraform-bset-practice-jp/>`_
+* `「それ、どこに出しても恥ずかしくないTerraformコードになってるか？」 / Terraform AWS Best Practices <https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16>`
+* `Terraform連載 第5回：module(モジュール)の紹介 <https://www.ntt-tx.co.jp/column/iac/231204/>`_
+* `Terraformでローカルファイルを操作する方法　 ～よくある使い方3選～ <https://tech.nri-net.com/entry/how_to_operate_local_files_with_terraform>`_
+* `Amazon Linux 2023 の 最新 AMI ID は Parameter Store から取得しよう！ <https://dev.classmethod.jp/articles/retrieve-latest-ami-id-of-amazonlinux-2023/>`_
