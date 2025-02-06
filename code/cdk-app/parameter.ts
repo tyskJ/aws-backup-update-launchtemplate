@@ -1,28 +1,28 @@
 /*
-╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ Ep.001 Launch Template Update Solution - Cloud Development Kit parameter.ts                                                               ║
-╠══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ This file that defines the parameters for each resource.                                                                                 ║
-╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Ep.001 Launch Template Update Solution - Cloud Development Kit parameter.ts                                                                        ║
+╠════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ This file that defines the parameters for each resource.                                                                                           ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 
 /*
-╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║ type (Define your own type)                                                                                                               ║
-╠═════════════════╤═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-║ vpcInfo         │ Type defined L1 Construct vpc configuration information.                                                                ║
-║ subnetInfo      │ Type defined L1 Construct subnet configuration information.                                                             ║
-║ kmsInfo         │ Type defined L2 Construct KMS information.                                                                              ║
-║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                               ║
-║ iamRoleInfo     │ Type defined L2 Construct IAM Role information.                                                                         ║
-║ bkvaultInfo     │ Type defined L2 Construct AWS Backup Vault information.                                                                 ║
-║ logsInfo        │ Type defined L1 Construct CloudWatch Logs LogGroup.                                                                     ║
-║ lambdaInfo      │ Type defined L2 Construct Lambda Function.                                                                              ║
-║ ruleInfo        │ Type defined L2 Construct EventBridge Rule.                                                                             ║
-║ keypairInfo     │ Type defined L1 Construct KeyPair.                                                                                      ║
-║ secgInfo        │ Type defined L2 Construct SecurityGroup.                                                                                ║
-║ ec2Info         │ Type defined L1 Construct EC2 Instance.                                                                                 ║
-╚═════════════════╧═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ type (Define your own type)                                                                                                                        ║
+╠═════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ vpcInfo         │ Type defined L1 Construct vpc configuration information.                                                                         ║
+║ subnetInfo      │ Type defined L1 Construct subnet configuration information.                                                                      ║
+║ kmsInfo         │ Type defined L2 Construct KMS information.                                                                                       ║
+║ iamPolicyInfo   │ Type defined L2 Construct IAM Managed Policy information.                                                                        ║
+║ iamRoleInfo     │ Type defined L2 Construct IAM Role information.                                                                                  ║
+║ bkvaultInfo     │ Type defined L2 Construct AWS Backup Vault information.                                                                          ║
+║ logsInfo        │ Type defined L1 Construct CloudWatch Logs LogGroup.                                                                              ║
+║ lambdaInfo      │ Type defined L2 Construct Lambda Function.                                                                                       ║
+║ ruleInfo        │ Type defined L2 Construct EventBridge Rule.                                                                                      ║
+║ keypairInfo     │ Type defined L1 Construct KeyPair.                                                                                               ║
+║ secgInfo        │ Type defined L2 Construct SecurityGroup.                                                                                         ║
+║ ec2Info         │ Type defined L1 Construct EC2 Instance.                                                                                          ║
+╚═════════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export type vpcInfo = {
   id: string;
@@ -122,9 +122,9 @@ export type ec2Info = {
 };
 
 /*
-╔════════════════════════════════════════════════════════════════╗
-║ Interface Parameter                                            ║
-╚════════════════════════════════════════════════════════════════╝
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ Interface Parameter                                                                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export interface Parameter {
   AppName: string;
@@ -146,26 +146,26 @@ export interface Parameter {
 }
 
 /*
-╔════════════════════════════════════════════════════════════════╗
-║ devParameter                                                   ║
-╠═════════════════╤══════════════════════════════════════════════╣
-║ AppName         │ common tag value.                            ║
-║ vpc             │ VPC.                                         ║
-║ subnet          │ Private Subnet.                              ║
-║ ebsCmk          │ CMK for EBS.                                 ║
-║ backupCmk       │ CMK for AWS Backup.                          ║
-║ ltupdatePolicy  │ ltUpdate IAM Policy.                         ║
-║ lambdaRole      │ Lambda IAM Role.                             ║
-║ backupRole      │ AWS Backup IAM Role.                         ║
-║ ec2Role         │ EC2 IAM Role.                                ║
-║ bkVault         │ AWS Backup Vault.                            ║
-║ logGroup        │ LogGroup for Lambda.                         ║
-║ fn              │ Lambda Function.                             ║
-║ rule            │ EventBridge Rule.                            ║
-║ keyPair         │ KeyPair.                                     ║
-║ secg            │ SecurityGroup.                               ║
-║ ec2             │ EC2 Instance.                                ║
-╚═════════════════╧══════════════════════════════════════════════╝
+╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║ devParameter                                                                                                                                       ║
+╠═════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+║ AppName         │ common tag value.                                                                                                                ║
+║ vpc             │ VPC.                                                                                                                             ║
+║ subnet          │ Private Subnet.                                                                                                                  ║
+║ ebsCmk          │ CMK for EBS.                                                                                                                     ║
+║ backupCmk       │ CMK for AWS Backup.                                                                                                              ║
+║ ltupdatePolicy  │ ltUpdate IAM Policy.                                                                                                             ║
+║ lambdaRole      │ Lambda IAM Role.                                                                                                                 ║
+║ backupRole      │ AWS Backup IAM Role.                                                                                                             ║
+║ ec2Role         │ EC2 IAM Role.                                                                                                                    ║
+║ bkVault         │ AWS Backup Vault.                                                                                                                ║
+║ logGroup        │ LogGroup for Lambda.                                                                                                             ║
+║ fn              │ Lambda Function.                                                                                                                 ║
+║ rule            │ EventBridge Rule.                                                                                                                ║
+║ keyPair         │ KeyPair.                                                                                                                         ║
+║ secg            │ SecurityGroup.                                                                                                                   ║
+║ ec2             │ EC2 Instance.                                                                                                                    ║
+╚═════════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 */
 export const devParameter: Parameter = {
   AppName: "ep001",

@@ -1,13 +1,13 @@
-# ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
-# ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ ssh_keygen              │ tls_private_key                   │ setting SSH keygen algorithm.                                                       ║
-# ║ keypair_pem             │ local_sensitive_file              │ create private key file to local.                                                   ║
-# ║ keypair                 │ aws_key_pair                      │ Key Pair.                                                                           ║
-# ║ securitygroup           │ aws_key_pair                      │ Key Pair.                                                                           ║
-# ║ ec2_instance            │ aws_instance                      │ EC2 Instance.                                                                       ║
-# ║ launch_template         │ aws_launch_template               │ Launch Template.                                                                    ║
-# ╚═════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                              ║
+# ╠═════════════════════════╤═══════════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════╣
+# ║ ssh_keygen              │ tls_private_key                   │ setting SSH keygen algorithm.                                                      ║
+# ║ keypair_pem             │ local_sensitive_file              │ create private key file to local.                                                  ║
+# ║ keypair                 │ aws_key_pair                      │ Key Pair.                                                                          ║
+# ║ securitygroup           │ aws_key_pair                      │ Key Pair.                                                                          ║
+# ║ ec2_instance            │ aws_instance                      │ EC2 Instance.                                                                      ║
+# ║ launch_template         │ aws_launch_template               │ Launch Template.                                                                   ║
+# ╚═════════════════════════╧═══════════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════╝
 
 resource "tls_private_key" "ssh_keygen" {
   algorithm = "RSA"

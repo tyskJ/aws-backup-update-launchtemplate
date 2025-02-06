@@ -1,5 +1,5 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                          ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                         ║
 # ╠════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
 # ║ ec2_cmk_name           │ string                            │ EC2 CMK name.                                                                       ║
 # ║ backup_cmk_name        │ string                            │ AWS Backup CMK name.                                                                ║

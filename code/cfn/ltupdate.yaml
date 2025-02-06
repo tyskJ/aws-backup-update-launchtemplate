@@ -1,6 +1,6 @@
-# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - CloudFormation Template                                                                                          ║
-# ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template                                                                                 ║
+# ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Launch Template Update Solution Stack."
 Transform:
@@ -16,13 +16,13 @@ Metadata:
           - InstanceType
           - VolumeSize
 
-# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Parameters                                                                                                   ║
-# ╠═══════════════════════╤═══════════════════════════════════════════════════╤══════════════════════════════════════════════════════════════════════════════════════════════════╣
-# ║ LatestAmiId           │ AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>   │ Latest Amazon Linux 2023 AMI ID.                                                                 ║
-# ║ InstanceType          │ String                                            │ EC2 Instance Type.                                                                               ║
-# ║ VolumeSize            │ Number                                            │ EBS Volume Size.                                                                                 ║
-# ╚═══════════════════════╧═══════════════════════════════════════════════════╧══════════════════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Parameters                                                                      ║
+# ╠═══════════════════════╤═══════════════════════════════════════════════════╤══════════════════════════════════════════════════════════════════════╣
+# ║ LatestAmiId           │ AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>   │ Latest Amazon Linux 2023 AMI ID.                                     ║
+# ║ InstanceType          │ String                                            │ EC2 Instance Type.                                                   ║
+# ║ VolumeSize            │ Number                                            │ EBS Volume Size.                                                     ║
+# ╚═══════════════════════╧═══════════════════════════════════════════════════╧══════════════════════════════════════════════════════════════════════╝
 Parameters:
   LatestAmiId:
     Description: Latest Amazon Linux 2023 AMI ID.
@@ -42,7 +42,7 @@ Parameters:
     MaxValue: 100
 
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Mappings                                                                         ║
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Mappings                                                                        ║
 # ╠═════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 # ║ CMKParams           │ KMS CMK parameters.                                                                                                        ║
 # ║ IAMParams           │ IAM Role parameters.                                                                                                       ║
@@ -58,29 +58,29 @@ Mappings:
       Lambda: LambdaRole
       Ec2: Ec2Role
 
-# ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Resources                                                                                               ║
-# ╠═════════════════════════════════════╤═════════════════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ BackupCmk                           │ AWS::KMS::Key                               │ CMK for AWS Backup.                                                                 ║
-# ║ EbsCmk                              │ AWS::KMS::Key                               │ CMK for Amazon EBS.                                                                 ║
-# ║ BackupCmkAlias                      │ AWS::KMS::Alias                             │ AWS Backup CMK Alias.                                                               ║
-# ║ EbsCmkAlias                         │ AWS::KMS::Alias                             │ Amazon EBS CMK Alias.                                                               ║
-# ║ BackupRole                          │ AWS::IAM::Role                              │ IAM Role for AWS Backup Job.                                                        ║
-# ║ LambdaPolicy                        │ AWS::IAM::ManagedPolicy                     │ IAM Policy for AWS Lambda Update Launch Template.                                   ║
-# ║ LambdaRole                          │ AWS::IAM::Role                              │ IAM Role for AWS Lambda.                                                            ║
-# ║ Ec2Role                             │ AWS::IAM::Role                              │ IAM Role for EC2 Instance.                                                          ║
-# ║ BkVault                             │ AWS::Backup::BackupVault                    │ AWS Backup Vault.                                                                   ║
-# ║ Vpc                                 │ AWS::EC2::VPC                               │ VPC.                                                                                ║
-# ║ PrivateSubnet                       │ AWS::EC2::Subnet                            │ Private Subnet.                                                                     ║
-# ║ KeyPair                             │ AWS::EC2::KeyPair                           │ KeyPair.                                                                            ║
-# ║ Ec2Sg                               │ AWS::EC2::SecurityGroup                     │ EC2 SecurityGroup.                                                                  ║
-# ║ Ec2InstanceProfile                  │ AWS::IAM::InstanceProfile                   │ IAM Instance Profile.                                                               ║
-# ║ LaunchTemplate                      │ AWS::EC2::LaunchTemplate                    │ Launch Template.                                                                    ║
-# ║ Ec2Instance                         │ AWS::EC2::Instance                          │ EC2 Instance.                                                                       ║
-# ║ LogGroup                            │ AWS::Logs::LogGroup                         │ LogGroup for Lambda Function.                                                       ║
-# ║ LambdaFunction                      │ AWS::Serverless::Function                   │ Lambda Function for Update Launch Template.                                         ║
-# ║ LambdaFunctionEventRule             │ AWS::Events::Rule                           │ Event Rule for Backup Job Complete. (Created By SAM Properties.)                    ║
-# ╚═════════════════════════════════════╧═════════════════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - CloudFormation Template Resources                                                                       ║
+# ╠═════════════════════════════════════╤══════════════════════════════════════════╤═════════════════════════════════════════════════════════════════╣
+# ║ BackupCmk                           │ AWS::KMS::Key                            │ CMK for AWS Backup.                                             ║
+# ║ EbsCmk                              │ AWS::KMS::Key                            │ CMK for Amazon EBS.                                             ║
+# ║ BackupCmkAlias                      │ AWS::KMS::Alias                          │ AWS Backup CMK Alias.                                           ║
+# ║ EbsCmkAlias                         │ AWS::KMS::Alias                          │ Amazon EBS CMK Alias.                                           ║
+# ║ BackupRole                          │ AWS::IAM::Role                           │ IAM Role for AWS Backup Job.                                    ║
+# ║ LambdaPolicy                        │ AWS::IAM::ManagedPolicy                  │ IAM Policy for AWS Lambda Update Launch Template.               ║
+# ║ LambdaRole                          │ AWS::IAM::Role                           │ IAM Role for AWS Lambda.                                        ║
+# ║ Ec2Role                             │ AWS::IAM::Role                           │ IAM Role for EC2 Instance.                                      ║
+# ║ BkVault                             │ AWS::Backup::BackupVault                 │ AWS Backup Vault.                                               ║
+# ║ Vpc                                 │ AWS::EC2::VPC                            │ VPC.                                                            ║
+# ║ PrivateSubnet                       │ AWS::EC2::Subnet                         │ Private Subnet.                                                 ║
+# ║ KeyPair                             │ AWS::EC2::KeyPair                        │ KeyPair.                                                        ║
+# ║ Ec2Sg                               │ AWS::EC2::SecurityGroup                  │ EC2 SecurityGroup.                                              ║
+# ║ Ec2InstanceProfile                  │ AWS::IAM::InstanceProfile                │ IAM Instance Profile.                                           ║
+# ║ LaunchTemplate                      │ AWS::EC2::LaunchTemplate                 │ Launch Template.                                                ║
+# ║ Ec2Instance                         │ AWS::EC2::Instance                       │ EC2 Instance.                                                   ║
+# ║ LogGroup                            │ AWS::Logs::LogGroup                      │ LogGroup for Lambda Function.                                   ║
+# ║ LambdaFunction                      │ AWS::Serverless::Function                │ Lambda Function for Update Launch Template.                     ║
+# ║ LambdaFunctionEventRule             │ AWS::Events::Rule                        │ Event Rule for Backup Job Complete. (Created By SAM Properties.)║
+# ╚═════════════════════════════════════╧══════════════════════════════════════════╧═════════════════════════════════════════════════════════════════╝
 Resources:
   BackupCmk:
     Type: AWS::KMS::Key

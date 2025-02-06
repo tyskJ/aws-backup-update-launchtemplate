@@ -1,11 +1,11 @@
-# ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 # ║ Ep.001 Launch Template Update Solution - Terraform data.tf data                                                                                  ║
-# ╠═══════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ ec2_trust_policy      │ aws_iam_policy_document           │ Trust policy for EC2.                                                               ║
-# ║ lambda_trust_policy   │ aws_iam_policy_document           │ Trust policy for Lambda.                                                            ║
-# ║ backup_trust_policy   │ aws_iam_policy_document           │ Trust policy for AWS Backup.                                                        ║
-# ║ ltupdate_statement    │ aws_iam_policy_document           │ IAM Policy Statement for launchtemplate update.                                     ║
-# ╚═══════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╠═══════════════════════╤═══════════════════════════════════╤══════════════════════════════════════════════════════════════════════════════════════╣
+# ║ ec2_trust_policy      │ aws_iam_policy_document           │ Trust policy for EC2.                                                                ║
+# ║ lambda_trust_policy   │ aws_iam_policy_document           │ Trust policy for Lambda.                                                             ║
+# ║ backup_trust_policy   │ aws_iam_policy_document           │ Trust policy for AWS Backup.                                                         ║
+# ║ ltupdate_statement    │ aws_iam_policy_document           │ IAM Policy Statement for launchtemplate update.                                      ║
+# ╚═══════════════════════╧═══════════════════════════════════╧══════════════════════════════════════════════════════════════════════════════════════╝
 
 data "aws_iam_policy_document" "ec2_trust_policy" {
   statement {

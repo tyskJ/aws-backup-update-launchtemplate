@@ -1,12 +1,12 @@
-# ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
-# ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ lg_lambda               │ aws_cloudwatch_log_group          │ LogGroup for Lambda Function.                                                       ║
-# ║ lambda_function         │ aws_lambda_function               │ Lambda Function.                                                                    ║
-# ║ event_rule              │ aws_cloudwatch_event_rule         │ EventBridge Rule.                                                                   ║
-# ║ event_target            │ aws_cloudwatch_event_target       │ EventBridge Rule Target.                                                            ║
-# ║ invoke_permission       │ aws_lambda_permission             │ Permission for invoke Lambda from eventbridge.                                      ║
-# ╚═════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                              ║
+# ╠═════════════════════════╤═══════════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════╣
+# ║ lg_lambda               │ aws_cloudwatch_log_group          │ LogGroup for Lambda Function.                                                      ║
+# ║ lambda_function         │ aws_lambda_function               │ Lambda Function.                                                                   ║
+# ║ event_rule              │ aws_cloudwatch_event_rule         │ EventBridge Rule.                                                                  ║
+# ║ event_target            │ aws_cloudwatch_event_target       │ EventBridge Rule Target.                                                           ║
+# ║ invoke_permission       │ aws_lambda_permission             │ Permission for invoke Lambda from eventbridge.                                     ║
+# ╚═════════════════════════╧═══════════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════╝
 
 resource "aws_cloudwatch_log_group" "lg_lambda" {
   name              = "lg-ltupdate"

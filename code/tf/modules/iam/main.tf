@@ -1,16 +1,16 @@
-# ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                                ║
-# ╠═════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ ltupdate_policy         │ aws_iam_policy                    │ IAM policy for Launch Template Update.                                              ║
-# ║ ec2_role                │ aws_iam_role                      │ IAM role for EC2.                                                                   ║
-# ║ lambda_role             │ aws_iam_role                      │ IAM role for Lambda.                                                                ║
-# ║ backup_role             │ aws_iam_role                      │ IAM role for Backup.                                                                ║
-# ║ lambda_cwlogs_attach    │ aws_iam_role_policy_attachment    │ Attach cwlogs policy attach to Lambda role.                                         ║
-# ║ lambda_ltupdate_attach  │ aws_iam_role_policy_attachment    │ Attach ltupdate policy attach to Lambda role.                                       ║
-# ║ backup_backup_attach    │ aws_iam_role_policy_attachment    │ Attach backup policy attach to Backup role.                                         ║
-# ║ backup_restore_attach   │ aws_iam_role_policy_attachment    │ Attach restore policy attach to Backup role.                                        ║
-# ║ ec2_instance_profile    │ aws_iam_instance_profile          │ EC2 instance profile.                                                               ║
-# ╚═════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf resource                                                                              ║
+# ╠═════════════════════════╤═══════════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════╣
+# ║ ltupdate_policy         │ aws_iam_policy                    │ IAM policy for Launch Template Update.                                             ║
+# ║ ec2_role                │ aws_iam_role                      │ IAM role for EC2.                                                                  ║
+# ║ lambda_role             │ aws_iam_role                      │ IAM role for Lambda.                                                               ║
+# ║ backup_role             │ aws_iam_role                      │ IAM role for Backup.                                                               ║
+# ║ lambda_cwlogs_attach    │ aws_iam_role_policy_attachment    │ Attach cwlogs policy attach to Lambda role.                                        ║
+# ║ lambda_ltupdate_attach  │ aws_iam_role_policy_attachment    │ Attach ltupdate policy attach to Lambda role.                                      ║
+# ║ backup_backup_attach    │ aws_iam_role_policy_attachment    │ Attach backup policy attach to Backup role.                                        ║
+# ║ backup_restore_attach   │ aws_iam_role_policy_attachment    │ Attach restore policy attach to Backup role.                                       ║
+# ║ ec2_instance_profile    │ aws_iam_instance_profile          │ EC2 instance profile.                                                              ║
+# ╚═════════════════════════╧═══════════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════╝
 
 resource "aws_iam_policy" "ltupdate_policy" {
   name        = var.ltupdate_policy_name

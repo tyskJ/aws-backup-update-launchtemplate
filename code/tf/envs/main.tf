@@ -1,13 +1,13 @@
-# ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform main.tf module                                                                          ║
-# ╠═════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ nw              │ ./modules/vpc_subnet              │ invoke network module.                                                              ║
-# ║ iam             │ ./modules/iam                     │ invoke iam module.                                                                  ║
-# ║ kms             │ ./modules/kms                     │ invoke kms module.                                                                  ║
-# ║ backup          │ ./modules/awsbackup               │ invoke awsbackup module.                                                            ║
-# ║ ec2             │ ./modules/ec2                     │ invoke ec2 module.                                                                  ║
-# ║ observe         │ ./modules/lambda_eventbridge      │ invoke observe module.                                                              ║
-# ╚═════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
+# ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+# ║ Ep.001 Launch Template Update Solution - Terraform main.tf module                                                                                ║
+# ╠═════════════════╤═══════════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════╣
+# ║ nw              │ ./modules/vpc_subnet              │ invoke network module.                                                                     ║
+# ║ iam             │ ./modules/iam                     │ invoke iam module.                                                                         ║
+# ║ kms             │ ./modules/kms                     │ invoke kms module.                                                                         ║
+# ║ backup          │ ./modules/awsbackup               │ invoke awsbackup module.                                                                   ║
+# ║ ec2             │ ./modules/ec2                     │ invoke ec2 module.                                                                         ║
+# ║ observe         │ ./modules/lambda_eventbridge      │ invoke observe module.                                                                     ║
+# ╚═════════════════╧═══════════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════════════╝
 
 module "nw" {
   source = "../modules/vpc_subnet"
