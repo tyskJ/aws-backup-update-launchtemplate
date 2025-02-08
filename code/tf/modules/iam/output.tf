@@ -1,16 +1,16 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform outputs.tf output                                                                             ║
+# ║ Ep.001 Launch Template Update Solution - Terraform output.tf output                                                                              ║
 # ╠═════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-# ║ backup_kms_key_arn          │ KMS Key Arn for backup kms key.                                                                                    ║
-# ║ ec2_kms_key_id              │ KMS Key Id for EC2 kms key.                                                                                        ║
+# ║ ec2_instance_profile_name   │ EC2 instance profile name.                                                                                         ║
+# ║ lambda_role_arn             │ Lambda IAM Role Arn.                                                                                               ║
 # ╚═════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
-output "backup_kms_key_arn" {
-  value       = aws_kms_key.backup_cmk.arn
-  description = "KMS Key Arn for backup kms key."
+output "ec2_instance_profile_name" {
+  value       = aws_iam_instance_profile.ec2_instance_profile.name
+  description = "EC2 instance profile name."
 }
 
-output "ec2_kms_key_id" {
-  value       = aws_kms_key.ec2_cmk.key_id
-  description = "KMS Key Id for EC2 kms key."
+output "lambda_role_arn" {
+  value       = aws_iam_role.lambda_role.arn
+  description = "Lambda IAM Role Arn."
 }

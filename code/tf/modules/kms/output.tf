@@ -1,14 +1,16 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform outputs.tf output                                                                             ║
+# ║ Ep.001 Launch Template Update Solution - Terraform output.tf output                                                                              ║
 # ╠═════════════════════════════╤════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-# ║ vpc_id                      │ VPC ID.                                                                                                            ║
-# ║ subnet_id                   │ Subnet ID.                                                                                                         ║
+# ║ backup_kms_key_arn          │ KMS Key Arn for backup kms key.                                                                                    ║
+# ║ ec2_kms_key_id              │ KMS Key Id for EC2 kms key.                                                                                        ║
 # ╚═════════════════════════════╧════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 
-output "vpc_id" {
-  value = aws_vpc.vpc.id
+output "backup_kms_key_arn" {
+  value       = aws_kms_key.backup_cmk.arn
+  description = "KMS Key Arn for backup kms key."
 }
 
-output "subnet_id" {
-  value = aws_subnet.subnet.id
+output "ec2_kms_key_id" {
+  value       = aws_kms_key.ec2_cmk.key_id
+  description = "KMS Key Id for EC2 kms key."
 }

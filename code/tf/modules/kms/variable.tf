@@ -1,16 +1,16 @@
 # ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-# ║ Ep.001 Launch Template Update Solution - Terraform variables.tf variable                                                                         ║
+# ║ Ep.001 Launch Template Update Solution - Terraform variable.tf variable                                                                          ║
 # ╠════════════════════════╤═══════════════════════════════════╤═════════════════════════════════════════════════════════════════════════════════════╣
-# ║ bkvault_name           │ string                            │ AWS Backup Vault name.                                                              ║
-# ║ kms_key_arn            │ string                            │ KMS Key Arn for AWS Backup Vault.                                                   ║
+# ║ ec2_cmk_name           │ string                            │ EC2 CMK name.                                                                       ║
+# ║ backup_cmk_name        │ string                            │ AWS Backup CMK name.                                                                ║
 # ╚════════════════════════╧═══════════════════════════════════╧═════════════════════════════════════════════════════════════════════════════════════╝
 
-variable "bkvault_name" {
+variable "ec2_cmk_name" {
   type        = string
-  description = "AWS Backup Vault name."
+  description = "EC2 CMK name."
 }
 
-variable "kms_key_arn" {
+variable "backup_cmk_name" {
   type        = string
-  description = "KMS Key Arn for AWS Backup Vault."
+  description = "AWS Backup CMK name."
 }
