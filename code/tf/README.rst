@@ -100,7 +100,7 @@
 ---------------------------------------------------------------------
 * `特定タグが設定されたAMIが作成された時に自動で起動テンプレートを更新する <https://dev.classmethod.jp/articles/use-daily-backup-of-asg-instance-for-golden-image/>`_
 * `Terraform ベストプラクティスを整理してみました。 <https://dev.classmethod.jp/articles/terraform-bset-practice-jp/>`_
-* `「それ、どこに出しても恥ずかしくないTerraformコードになってるか？」 / Terraform AWS Best Practices <https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16>`
+* `「それ、どこに出しても恥ずかしくないTerraformコードになってるか？」 / Terraform AWS Best Practices <https://speakerdeck.com/yuukiyo/terraform-aws-best-practices?slide=16>`_
 * `Terraform連載 第5回：module(モジュール)の紹介 <https://www.ntt-tx.co.jp/column/iac/231204/>`_
 * `Terraformでローカルファイルを操作する方法　 ～よくある使い方3選～ <https://tech.nri-net.com/entry/how_to_operate_local_files_with_terraform>`_
 * `Amazon Linux 2023 の 最新 AMI ID は Parameter Store から取得しよう！ <https://dev.classmethod.jp/articles/retrieve-latest-ami-id-of-amazonlinux-2023/>`_
